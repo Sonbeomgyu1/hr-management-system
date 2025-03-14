@@ -27,14 +27,14 @@
 
 - **프리랜서**: 검색, 등록, 수정, 삭제 및 고객 목록 이동 기능 제공.
   - **프리랜서 리스트 페이지**에서 **검색 기능 :** 등록자, 지역, 이름, 기술, 업무, 경력 등을 기준으로 검색할 수 있습니다.
-   - ![image](https://github.com/user-attachments/assets/a7744c8c-e133-4562-b7bf-29c2e1c9cc21)
+    ![image](https://github.com/user-attachments/assets/a7744c8c-e133-4562-b7bf-29c2e1c9cc21)
   - **프리랜서 등록:** 프리랜서 등록 페이지에서 프리랜서를 등록하면 해당 정보가 시스템에 자동으로 저장됩니다.
-   - ![image](https://github.com/user-attachments/assets/be63ecfb-6383-43a6-917c-2e115c0114b2)
+    ![image](https://github.com/user-attachments/assets/be63ecfb-6383-43a6-917c-2e115c0114b2)
   - **프리랜서 수정 페이지**:대화 내용 작성 후 전송하면, 접속한 ID의 displayName이 대화 내용에 표시됩니다.
    - **프리랜서 수정 페이지**에서 **고객 목록으로 이동** 버튼을 누르면, 프리랜서 정보가 고객 목록으로 저장됩니다.
    - **프리랜서 수정 페이지**에서 **delect** 버튼을 누르면, 프리랜서 정보가 삭제됩니다.
-   - ![image](https://github.com/user-attachments/assets/39188348-5c62-4f93-bc3c-a17a9da89f2d)
-   - ![image](https://github.com/user-attachments/assets/407befc8-9927-4b69-a10c-8b5ac5de7db3)
+    ![image](https://github.com/user-attachments/assets/39188348-5c62-4f93-bc3c-a17a9da89f2d)
+    ![image](https://github.com/user-attachments/assets/407befc8-9927-4b69-a10c-8b5ac5de7db3)
   
   
  
