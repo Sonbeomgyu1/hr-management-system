@@ -40,10 +40,10 @@
  
 - **잡코리아 관리**:검색, 등록, 수정, 삭제 및 고객 목록 이동 기능 제공.
   - **잡코리아 리스트 페이지**에서 **검색기능**: 유형, 등록자, 지역, 이름, 기술 등을 기준으로 검색할 수 있습니다.
-  - ![image](https://github.com/user-attachments/assets/db3a5f81-fad6-4c7a-99e5-15cfbe155ee5)
+   ![image](https://github.com/user-attachments/assets/db3a5f81-fad6-4c7a-99e5-15cfbe155ee5)
 
   - **잡코리아 등록:** 잡코리아 등록 페이지에서 잡코리아를 등록하면 해당 정보가 시스템에 자동으로 저장됩니다.
-  - ![image](https://github.com/user-attachments/assets/0c809c48-bf1c-4044-bb04-d118d2fd9fa5)
+   ![image](https://github.com/user-attachments/assets/0c809c48-bf1c-4044-bb04-d118d2fd9fa5)
 
   - **잡코리아 수정 페이지**:대화 내용 작성 후 전송하면, 접속한 ID의 displayName이 대화 내용에 표시됩니다.  
   - **잡코리아 수정 페이지**에서 **고객 목록으로 이동** 버튼을 누르면, 잡코리아 정보가 고객 목록으로 저장됩니다.
