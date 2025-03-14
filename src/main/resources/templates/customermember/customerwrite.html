@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>고객 추가/수정</title>
+    <link rel="stylesheet" href="/customer_form.css">
+    <link href="/main.css" rel="stylesheet">
+</head>
+<body>
+<div th:replace="~{ nav.html::navbar }"></div>
+<div class="customer-form-container">
+    <h1 class="customer-form-title">고객 추가</h1>
+
+    <!-- 고객 폼 -->
+    <form class="customer-form" action="/customerAdd" method="POST">
+        <label for="name">이름</label>
+        <input type="text" id="name" name="name" th:value="${customer.name}" class="customer-input">
+
+        <label for="region">지역</label>
+        <input type="text" id="region" name="region" th:value="${customer.region}" class="customer-input">
+
+        <label for="phoneNumber">전화번호</label>
+        <input type="text" id="phoneNumber" name="phoneNumber" th:value="${customer.phoneNumber}" class="customer-input">
+
+        <label for="skill">기술</label>
+        <input type="text" id="skill" name="skill" th:value="${customer.skill}" class="customer-input">
+
+        <label for="grade">등급</label>
+        <input type="text" id="grade" name="grade"  th:value="${customer.grade}"class="customer-input">
+
+        <label for="content">내용</label>
+        <input type="text" id="content" name="content" class="customer-input">
+
+        <label for="createdDate">입력 날짜</label>
+        <input type="date" id="createdDate" name="createdDate" class="customer-input">
+
+        <div class="customer-form-buttons">
+            <button type="submit" class="customer-save-button"onclick="location.href='/customerlist'">저장</button>
+            <button type="button" class="customer-cancel-button" onclick="location.href='/customerlist'">취소</button>
+        </div>
+    </form>
+</div>
+</body>
+</html>

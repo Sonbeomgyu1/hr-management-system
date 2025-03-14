@@ -1,0 +1,136 @@
+  /* 페이지 전체 레이아웃 조정 */
+        .container {
+            display: flex;
+            flex-direction: row; /* 달력과 메모를 가로로 배치 */
+            justify-content: center; /* 달력을 화면 가운데로 배치 */
+            align-items: flex-start; /* 위쪽 정렬 */
+            margin: 20px;
+        }
+
+        /* 달력 크기 조정 */
+        #calendar {
+            width: 55%; /* 달력 영역 크기 조정 */
+            font-size: 14px;
+            height: auto;
+            margin-right: 40px; /* 메모와 간격 조정 */
+        }
+
+        /* 메모 목록 영역 스타일 */
+        .month-memos {
+            width: 15%; /* 메모 영역 크기 조정 */
+            font-size: 12px;
+            padding: 15px;
+            border: 2px solid #ccc; /* 테두리 추가 */
+            border-radius: 8px; /* 테두리 라운드 처리 */
+            background-color: #f9f9f9; /* 배경색 */
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1); /* 그림자 효과 */
+            position: relative;
+        }
+
+        /* 제목 스타일 */
+        .month-memos h3 {
+            text-align: center;
+            font-size: 18px;
+            color: #333;
+            margin-bottom: 15px;
+        }
+
+        /* 메모 목록 스타일 */
+        .month-memos ul {
+            list-style: none;
+            padding-left: 0;
+            margin: 0;
+        }
+
+        .month-memos li {
+            margin-bottom: 12px;
+            background-color: #fff; /* 각 메모 항목 배경색 */
+            padding: 8px;
+            border: 1px solid #ddd; /* 각 메모 항목 테두리 */
+            border-radius: 4px; /* 항목 테두리 라운드 처리 */
+            font-size: 14px;
+            color: #555;
+        }
+
+        /* 메모 입력 폼 스타일 */
+        #memoModal {
+            display: none;
+            position: fixed;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            background: white;
+            padding: 20px;
+            padding-right: 40px;
+            border: 1px solid #ccc;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+            max-width: 90%;
+            width: 400px;
+            max-height: 400px;
+            overflow: auto;
+            z-index: 9999;
+        }
+
+        #memoModal textarea {
+            width: 100%;
+            min-height: 100px;
+            padding: 10px;  /* 필요한 패딩을 다시 설정 */
+            resize: vertical;
+            border: 1px solid #ccc;  /* 필요시 추가 */
+            margin-top: 10px; /* 필요시 추가 */
+        }
+
+        #memoModal button {
+            margin-top: 10px;
+        }
+
+        /* 메모 삭제 버튼 스타일 */
+        #deleteMemo {
+            background-color: red;
+            color: white;
+            padding: 5px 15px;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+        }
+
+        #deleteMemo:hover {
+            background-color: darkred;
+        }
+
+        /* 저장 및 취소 버튼 스타일 */
+        button {
+            padding: 5px 15px;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+        }
+
+        #saveMemo {
+            background-color: #4CAF50;
+            color: white;
+        }
+
+        #cancelMemo {
+            background-color: #f44336;
+            color: white;
+        }
+
+        button:hover {
+            opacity: 0.8;
+        }
+
+        /* 왼쪽, 오른쪽 메모 구분 */
+        #monthMemosLeft {
+            position: absolute;
+            top: 90px;
+            left: 30px;
+            width: 15%;
+        }
+
+        #monthMemosRight {
+            position: absolute;
+            top: 90px;
+            right: 30px;
+            width: 15%;
+        }

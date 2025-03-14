@@ -1,0 +1,41 @@
+/* board 수정 페이지 폼 스타일 */
+form {
+    width: 100%;
+    max-width: 1000px; /* 폼의 최대 너비를 더 넓게 설정 */
+    padding: 60px;
+    background-color: white;
+    border-radius: 10px;
+    box-shadow: 0 6px 12px rgba(0, 0, 0, 0.15);
+    display: flex;
+    flex-direction: column;
+    gap: 30px; /* 요소 간 간격을 더 넓게 */
+    align-items: center; /* 폼 내 입력 요소 중앙 정렬 */
+    margin: 40px auto; /* 폼을 가운데 정렬 */
+    font-size: 18px; /* 폼 내 텍스트 크기 확대 */
+}
+
+/* 제목 크기 스타일 */
+h2 {
+    font-size: 40px; /* 제목 크기를 더 크게 */
+    font-weight: bold;
+    margin-bottom: 30px; /* 제목과 폼 사이의 간격 확대 */
+    text-align: center;
+}
+
+/* 입력 필드 스타일 */
+form input[type="text"] {
+    width: 100%;
+    padding: 15px; /* 입력 필드의 패딩 확대 */
+    font-size: 18px; /* 입력 필드 텍스트 크기 확대 */
+    border-radius: 6px; /* 입력 필드 모서리 둥글게 */
+    border: 1px solid #ccc;
+    margin-bottom: 30px; /* 입력 필드 사이 간격 확대 */
+    box-sizing: border-box;
+}
+
+/* 텍스트영역 (textarea) 스타일 */
+form textarea {
+    width: 100%; /* 너비를 100%로 맞추기 */
+    height: 300px; /* 텍스트영역 높이를 늘려서 더 커지게 설정 */
+    padding: 15px; /* 텍스트영역의 패딩 확대 */
+    font-size: 18px; /* 텍스트영역

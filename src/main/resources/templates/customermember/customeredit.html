@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Edit Customer</title>
+    <link href="/main.css" rel="stylesheet">
+    <link href="/customer_edit.css" rel="stylesheet">
+</head>
+<body>
+<div class="customer-edit-container">
+    <h2>Customer 수정 페이지</h2>
+    <form action="/customeredit" method="POST">
+        <input type="hidden" name="id" th:value="${customer.id}">
+
+        <div class="form-group">
+            <label for="name">Name:</label>
+            <input type="text" id="name" name="name" th:value="${customer.name}">
+        </div>
+
+        <div class="form-group">
+            <label for="region">Region:</label>
+            <input type="text" id="region" name="region" th:value="${customer.region}">
+        </div>
+
+        <div class="form-group">
+            <label for="phoneNumber">Phone Number:</label>
+            <input type="text" id="phoneNumber" name="phoneNumber" th:value="${customer.phoneNumber}">
+        </div>
+
+        <div class="form-group">
+            <label for="skill">Skill:</label>
+            <input type="text" id="skill" name="skill" th:value="${customer.skill}">
+        </div>
+
+        <div class="form-group">
+            <label for="grade">Grade:</label>
+            <input type="text" id="grade" name="grade" th:value="${customer.grade}">
+        </div>
+
+        <div class="form-group">
+            <label for="content">Content:</label>
+            <!-- th:text 대신 th:value를 사용하여 textarea 내용 설정 -->
+            <textarea id="content" name="content" th:text="${customer.content}"></textarea>
+        </div>
+
+
+        <div class="form-group">
+            <label for="createdDate">Created Date:</label>
+            <input type="date" id="createdDate" name="createdDate" th:value="${#dates.format(customer.createdDate, 'yyyy-MM-dd')}">
+        </div>
+
+        <button type="submit" class="submit-button">Save</button>
+    </form>
+</div>
+</body>
+</html>

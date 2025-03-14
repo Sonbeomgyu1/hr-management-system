@@ -1,0 +1,37 @@
+plugins {
+	id 'java'
+	id 'org.springframework.boot' version '3.4.2'
+	id 'io.spring.dependency-management' version '1.1.7'
+}
+
+group = 'com.apple'
+version = '0.0.1-SNAPSHOT'
+
+java {
+	toolchain {
+		languageVersion = JavaLanguageVersion.of(21)
+	}
+}
+
+repositories {
+	mavenCentral()
+}
+
+dependencies {
+	implementation 'org.springframework.boot:spring-boot-starter-web'
+	developmentOnly 'org.springframework.boot:spring-boot-devtools'
+	testImplementation 'org.springframework.boot:spring-boot-starter-test'
+	testRuntimeOnly 'org.junit.platform:junit-platform-launcher'
+	implementation 'org.springframework.boot:spring-boot-starter-thymeleaf' //서버에 데이터를 html 집어넣는걸 도와주는 라이브러리
+	runtimeOnly 'com.mysql:mysql-connector-j' //mysql 접속도와주는 라이브러리
+	implementation 'org.springframework.boot:spring-boot-starter-data-jpa' //자바코드짜서 데이터 입출력 입출력속도저하
+	compileOnly 'org.projectlombok:lombok'
+	annotationProcessor 'org.projectlombok:lombok'//코드 자동생성 라이브러리
+	implementation 'org.springframework.boot:spring-boot-starter-security' //스프링시큐리티
+	implementation 'org.hibernate:hibernate-java8' //sort를 사용할려면 이걸 써야함
+	implementation 'org.thymeleaf.extras:thymeleaf-extras-springsecurity6:3.1.1.RELEASE' //스프링시큐리티사용할수있는문법
+}
+
+tasks.named('test') {
+	useJUnitPlatform()
+}

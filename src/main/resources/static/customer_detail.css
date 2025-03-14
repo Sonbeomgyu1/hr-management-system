@@ -1,0 +1,119 @@
+/* 고객 상세 페이지 */
+.detail {
+    width: 80%;
+    margin: 50px auto;
+    padding: 30px;
+    border-radius: 12px;
+    background: linear-gradient(135deg, #f9f9f9, #e3f2fd);
+    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.1);
+    text-align: center;
+}
+
+.detail h4 {
+    font-size: 26px;
+    font-weight: bold;
+    color: #333;
+    text-align: center;
+    padding: 15px;
+    background: linear-gradient(90deg, #007bff, #00c6ff);
+    border-radius: 8px;
+    color: white;
+    display: inline-block;
+    padding: 10px 20px;
+    margin-bottom: 20px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+}
+
+/* 고객 정보 테이블 */
+.detail table {
+    width: 80%;  /* 테이블 너비를 80%로 설정 */
+    margin: 20px auto;  /* 가운데 정렬 */
+    border-collapse: collapse;
+    background-color: white;
+    border-radius: 10px;
+    overflow: hidden;
+}
+
+.detail th, .detail td {
+    padding: 12px;
+    text-align: center;  /* 테이블 내용 가운데 정렬 */
+}
+
+.detail th {
+    background: linear-gradient(90deg, #007bff, #00c6ff);
+    color: white;
+    font-weight: bold;
+    width: 20%; /* 열 크기 조정 */
+}
+
+.detail td {
+    border-bottom: 1px solid #ddd;
+    background: #ffffff;
+    color: #333;
+}
+
+/* 댓글 출력 */
+.comment-section {
+    margin-top: 30px;
+    text-align: left;
+}
+
+.comment-section h3 {
+    font-size: 20px;
+    font-weight: bold;
+    color: #333;
+}
+
+.comment-section p {
+    margin-bottom: 10px;
+    font-size: 16px;
+}
+
+.comment-section .comment-form input[type="text"] {
+    width: 80%;  /* 인풋 필드 너비 조정 */
+    padding: 10px;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+    margin: 0 auto;  /* 가운데 정렬 */
+    display: block;
+}
+
+.comment-section .comment-form button {
+    background: #007bff;
+    color: white;
+    border: none;
+    padding: 10px 20px;
+    border-radius: 5px;
+    cursor: pointer;
+    display: block;
+    margin: 10px auto;
+}
+
+.comment-section .comment-form button:hover {
+    background: #0056b3;
+}
+
+.comment-section .no-comments {
+    font-size: 16px;
+    color: #888;
+}
+
+/* 버튼 스타일 */
+.detail button {
+    display: inline-block;
+    padding: 12px 20px;
+    margin-top: 20px;
+    border: none;
+    background: linear-gradient(90deg, #007bff, #00c6ff);
+    color: white;
+    font-size: 16px;
+    font-weight: bold;
+    border-radius: 6px;
+    cursor: pointer;
+    transition: all 0.3s ease-in-out;
+}
+
+.detail button:hover {
+    background: linear-gradient(90deg, #0056b3, #0090ff);
+    transform: scale(1.05);
+}

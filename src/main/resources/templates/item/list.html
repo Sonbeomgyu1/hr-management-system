@@ -1,0 +1,61 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>쇼핑몰 상품 목록</title>
+    <link href="/main.css" rel="stylesheet">
+    <link href="/item/itemlist.css" rel="stylesheet">
+</head>
+<body>
+
+<!-- 네비게이션 바 -->
+<div th:replace="~{ nav.html::navbar }"></div>
+
+<!-- 검색폼 -->
+<div class="search-container">
+    <form action="/search" method="POST">
+        <input name="searchText" class="search-input" placeholder="검색어 입력">
+        <button type="submit" class="search-btn">검색</button>
+    </form>
+</div>
+
+<!-- 작성 버튼 -->
+<div class="write-button-container">
+    <button onclick="location.href='/write'" class="write-btn">✍️ 작성</button>
+</div>
+
+<!-- 아이템 리스트 -->
+<div class="item-list">
+    <div class="card" th:each="i : ${items}">
+        <img src="/images/apple.jpeg" alt="Item image"><!--https://placehold.co/300-->
+        <div class="item-info">
+            <a th:href="@{'/detail/' + ${i.id}}">
+                <h4 th:text="${i.title}">상품명</h4>
+            </a>
+            <p th:text="${i.price}">가격</p>
+
+            <div class="button-group">
+                <button th:onclick="|location.href='@{/edit/{id}(id=${i.id})}'|" class="edit-btn">✏️ 수정</button>
+                <button th:onclick="|fetch('/item?id=${i.id}', { method: 'DELETE' }).then(r => r.text()).then(() => { location.reload(); })|" class="delete-btn">🗑️ 삭제</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- 페이지 네비게이션 -->
+<div class="pagination">
+    <span th:if="${currentPage > 1}">
+        <a th:href="@{/list/page/{abc}(abc=${currentPage - 1})}" class="pagination-btn">이전</a>
+    </span>
+
+    <a href="/list/page/1" class="pagination-btn">1번페이지</a>
+    <a href="/list/page/2" class="pagination-btn">2번페이지</a>
+
+    <span th:if="${currentPage < totalPages}">
+        <a th:href="@{/list/page/{abc}(abc=${currentPage + 1})}" class="pagination-btn">다음</a>
+    </span>
+</div>
+
+</body>
+</html>

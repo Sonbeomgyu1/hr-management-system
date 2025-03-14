@@ -1,0 +1,77 @@
+/* 고객 수정 페이지 전체 레이아웃 */
+.customer-edit-container {
+    width: 50%;
+    margin: 50px auto;
+    padding: 30px;
+    border-radius: 12px;
+    background: linear-gradient(135deg, #f9f9f9, #e3f2fd);
+    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.1);
+    text-align: center;
+}
+
+/* 제목 스타일 */
+.customer-edit-container h2 {
+    font-size: 26px;
+    font-weight: bold;
+    color: #333;
+    text-align: center;
+    padding: 15px;
+    background: linear-gradient(90deg, #007bff, #00c6ff);
+    border-radius: 8px;
+    color: white;
+    display: inline-block;
+    padding: 10px 20px;
+    margin-bottom: 20px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+}
+
+/* 폼 그룹 */
+.form-group {
+    margin-bottom: 20px;
+    text-align: left;
+}
+
+/* 레이블 스타일 */
+.form-group label {
+    font-size: 16px;
+    font-weight: bold;
+    color: #333;
+    display: block;
+    margin-bottom: 5px;
+}
+
+/* 입력 필드 스타일 */
+.form-group input,
+.form-group textarea {
+    width: 100%;
+    padding: 10px;
+    font-size: 14px;
+    border: 1px solid #ddd;
+    border-radius: 6px;
+    margin-top: 5px;
+}
+
+/* 텍스트 영역 스타일 */
+.form-group textarea {
+    height: 150px;
+}
+
+/* 버튼 스타일 */
+.submit-button {
+    display: inline-block;
+    padding: 12px 20px;
+    margin-top: 20px;
+    border: none;
+    background: linear-gradient(90deg, #007bff, #00c6ff);
+    color: white;
+    font-size: 16px;
+    font-weight: bold;
+    border-radius: 6px;
+    cursor: pointer;
+    transition: all 0.3s ease-in-out;
+}
+
+.submit-button:hover {
+    background: linear-gradient(90deg, #0056b3, #0090ff);
+    transform: scale(1.05);
+}

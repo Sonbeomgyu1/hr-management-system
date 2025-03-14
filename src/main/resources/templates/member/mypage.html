@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>마이페이지</title>
+    <link href="/main.css" rel="stylesheet">
+    <link href="member/mypage.css" rel="stylesheet">
+</head>
+<body>
+<div th:replace="~{nav.html::navbar}"></div>
+
+<div class="container">
+    <div class="mypage-card">
+        <h2>마이페이지</h2>
+
+        <div class="user-info">
+            <p><strong>아이디:</strong> <span sec:authentication="principal.username"></span></p>
+            <p><strong>권한</strong>
+                <span sec:authorize="hasAuthority('ROLE_USER')">일반 유저</span>
+                <span sec:authorize="hasAuthority('ROLE_ADMIN')">관리자</span>
+            </p>
+        </div>
+
+        <div sec:authorize="hasAuthority('ROLE_USER')">
+            <p class="user-role">이 유저는 일반 유저입니다.</p>
+        </div>
+
+        <div sec:authorize="hasAuthority('ROLE_ADMIN')">
+            <p class="admin-role">이 유저는 관리자입니다.</p>
+        </div>
+
+        <button class="logout-btn" onclick="location.href='/logout'">로그아웃</button>
+    </div>
+    <div class="mypage-table-container">
+        <th:block th:each="entry : ${groupedOrders}">
+            <h3 class="order-date-title" th:text="${entry.key}">주문 날짜</h3> <!-- 날짜 제목 -->
+
+            <table class="mypage-table">
+                <thead>
+                <tr>
+                    <th>상품명</th>
+                    <th>가격</th>
+                    <th>수량</th>
+                    <th>구매자</th>
+                    <th>주문 날짜</th>
+                </tr>
+                </thead>
+                <tbody>
+                <tr th:each="order : ${entry.value}">
+                    <td th:text="${order.itemName}"></td>
+                    <td th:text="${order.price}"></td>
+                    <td th:text="${order.count}"></td>
+                    <td th:text="${order.member.displayName}"></td>
+                    <td th:text="${#temporals.format(order.created, 'HH:mm:ss')}"></td> <!-- 시간만 표시 -->
+                </tr>
+                </tbody>
+            </table>
+        </th:block>
+    </div>
+
+
+
+</div>
+</body>
+</html>

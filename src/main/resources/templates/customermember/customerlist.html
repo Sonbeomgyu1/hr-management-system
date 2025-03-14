@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>고객 정보 목록</title>
+    <link rel="stylesheet" href="/customer_list.css">
+    <link href="/main.css" rel="stylesheet">
+</head>
+<body>
+<div th:replace="~{ nav.html::navbar }"></div>
+<div class="customer-container">
+    <h1 class="customer-title">고객 정보 목록</h1>
+
+    <!-- 고객 검색 폼 -->
+    <form class="customer-search-form" action="/customersearch" method="POST">
+        <input type="text" name="searchText" class="customer-search-input" placeholder="검색어를 입력하세요" />
+        <button type="submit" class="customer-search-button">검색</button>
+    </form>
+
+    <!-- 고객 추가 버튼 -->
+    <button class="customer-add-button" onclick="location.href='/customerwrite'">고객 추가</button>
+    <!-- 고객 목록 테이블 -->
+    <table class="customer-table">
+        <thead>
+        <tr>
+            <th>이름</th>
+            <th>지역</th>
+            <th>전화번호</th>
+            <th>기술</th>
+            <th>등급</th>
+            <th>내용</th>
+            <th>입력 날짜</th>
+            <th>수정</th>
+            <th>삭제</th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr th:each="customer : ${customers}">
+            <td>
+                <a th:href="@{'/customerdetail/' + ${customer.id} }" th:text="${customer.name != null ? customer.name : '이름 없음'}"></a>
+            </td>
+            <td th:text="${customer.region != null ? customer.region : '지역 없음'}"></td>
+            <td th:text="${customer.phoneNumber != null ? customer.phoneNumber : '전화번호 없음'}"></td>
+            <td th:text="${customer.skill != null ? customer.skill : '기술 없음'}"></td>
+            <td th:text="${customer.grade != null ? customer.grade : '등급 없음'}"></td>
+            <td th:text="${customer.content != null ? customer.content : '내용 없음'}"></td>
+            <td th:text="${customer.createdDate != null ? customer.createdDate : '날짜 없음'}"></td>
+            <td>
+                <button class="customer-edit-button"
+                        th:onclick="|location.href='/customeredit/' + ${customer.id}|">
+                    수정
+                </button>
+            </td>
+            <td>
+                <button class="customer-delete-button" th:onclick="|fetch('/customerlist?id=' + ${customer.id}, { method: 'DELETE' })
+    .then(r => r.text())
+    .then(() => { location.reload(); })|">
+                    🗑️ 삭제
+                </button>
+            </td>
+        </tr>
+
+        </tbody>
+    </table>
+
+
+</div>
+</body>
+</html>

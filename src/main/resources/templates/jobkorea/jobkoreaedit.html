@@ -1,0 +1,177 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>잡코리아 데이터 수정</title>
+    <link href="/main.css" rel="stylesheet">
+    <link href="/jobkorea/jobkorea.css" rel="stylesheet">
+
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css">
+
+</head>
+
+<body>
+<div th:replace="~{ nav.html::navbar }"></div>
+<div class="container">
+    <h2 class="text-center">
+        잡코리아 데이터 수정
+        <form action="/manpowerwrite" method="get" style="display: flex; justify-content: space-between; width: 100%; align-items: center;">
+            <div></div> <!-- 여백을 추가하기 위한 빈 div -->
+            <input type="hidden" name="displayName" th:value="${displayName}">
+            <input type="hidden" name="name" th:value="${jobkorea.name}">
+            <input type="hidden" name="birthday" th:value="${jobkorea.birthday}">
+            <input type="hidden" name="email" th:value="${jobkorea.email}">
+            <input type="hidden" name="contactNumber" th:value="${jobkorea.contactNum}">
+            <input type="hidden" name="skills" th:value="${jobkorea.skill}">
+            <input type="hidden" name="workArea" th:value="${jobkorea.area}">
+            <input type="hidden" name="jobkoreaId" th:value="${jobkorea.jobKoreaId}">
+            <button type="submit" class="btn btn-danger">프리랜서 연결(등록)</button>
+        </form>
+    </h2>
+
+    <form action="/jobkoreaedit" method="post">
+        <!-- hidden 필드로 id 전달 -->
+        <input type="hidden" name="id" th:value="${jobkorea.id}">
+
+        <!-- 기본 정보 테이블 -->
+        <table class="table table-bordered table-striped">
+            <thead>
+            <tr>
+                <th>등록자</th>
+                <th>등록자 유형</th>
+                <th>이름</th>
+                <th>생년월일</th>
+                <th>서칭플젝명</th>
+            </tr>
+            </thead>
+            <tbody>
+            <tr>
+                <td><input type="text" name="displayName" class="form-control" th:value="${jobkorea.displayName}" readonly></td>
+                <td>
+                    <div class="select-wrapper">
+                        <select name="jobKoreatypecd" class="form-control">
+                            <option value="프리랜서" th:selected="${jobkorea.jobKoreaTypeCd == 'FREELANCER'}">프리랜서</option>
+                            <option value="정규직" th:selected="${jobkorea.jobKoreaTypeCd == 'FULLTIME'}">정규직</option>
+                            <option value="사업자" th:selected="${jobkorea.jobKoreaTypeCd == 'BUSINESS'}">사업자</option>
+                        </select>
+                        <span class="custom-arrow"></span>
+                    </div>
+                </td>
+
+                <td><input type="text" name="name" class="form-control" th:value="${jobkorea.name}"></td>
+                <td><input type="text" name="birthday" class="form-control" th:value="${jobkorea.birthday}"></td>
+                <td><input type="text" name="projectNm" class="form-control" th:value="${jobkorea.projectNm}"></td>
+            </tr>
+            </tbody>
+        </table>
+
+        <!-- 서칭일, 진행사항, 지역 -->
+        <table class="table table-bordered table-striped">
+            <thead>
+            <tr>
+                <th>서칭일</th>
+                <th>진행사항</th>
+                <th>지역</th>
+                <th>주요스킬</th>
+                <th>프리랜서 ID</th>
+            </tr>
+            </thead>
+            <tbody>
+            <tr>
+                <td><input type="date" name="searchdate" class="form-control" th:value="${jobkorea.searchDate}"></td>
+                <td><textarea name="progressDesc" class="form-control" th:text="${jobkorea.progressDesc}"></textarea></td>
+                <td><input type="text" name="area" class="form-control" th:value="${jobkorea.area}"></td>
+                <td><input type="text" name="skill" class="form-control" th:value="${jobkorea.skill}"></td>
+                <td><input type="number" name="manpowerId" class="form-control" th:value="${jobkorea.manpowerId}"></td>
+            </tr>
+            </tbody>
+        </table>
+
+        <!-- 잡코리아 아이디, 철수일자, 연락번호, 메일주소 -->
+        <table class="table table-bordered table-striped">
+            <thead>
+            <tr>
+                <th>잡코리아 아이디</th>
+                <th>철수일자</th>
+                <th>연락번호</th>
+                <th>메일주소</th>
+                <th>경력</th>
+                <th>희망단가</th>
+            </tr>
+            </thead>
+            <tbody>
+            <tr>
+                <td><input type="text" name="jobKoreaId" class="form-control" th:value="${jobkorea.jobKoreaId}"></td>
+                <td><input type="date" name="outDate" class="form-control" th:value="${jobkorea.outDate}"></td>
+                <td><input type="text" name="contactNum" class="form-control" th:value="${jobkorea.contactNum}"></td>
+                <td><input type="email" name="email" class="form-control" th:value="${jobkorea.email}"></td>
+                <td><input type="text" name="carrer" class="form-control" th:value="${jobkorea.carrer}"></td>
+                <td><input type="text" name="hopePrice" class="form-control" th:value="${jobkorea.hopePrice}"></td>
+            </tr>
+            </tbody>
+        </table>
+
+            <button type="button" class="btn btn-secondary" onclick="location.href='/jobkorea'">목록</button>
+            <button style="margin-left: 1050px" type="submit" class="btn btn-primary">Save</button>
+            <button type="button" class="btn btn-danger" onclick="submitDeleteForm()">Delete</button>
+    </form>
+
+
+
+
+    <!-- 삭제 폼 및 버튼 -->
+    <form action="/jobkoreadelete" method="post" id="deleteForm" style="display: none;">
+        <input type="hidden" name="id" th:value="${jobkorea.id}">
+    </form>
+
+    <!-- 댓글 출력 및 작성 폼 -->
+    <div class="comment-section-container">
+        <!-- 댓글 출력 -->
+        <div class="comment-section">
+            <h3>대화 내용</h3>
+            <div th:if="${comments != null and not #lists.isEmpty(comments)}">
+                <div th:each="comment : ${comments}">
+                    <p>
+<!--                        <strong th:text="${comment.username}">User</strong>:-->
+                        <strong th:text="${#authentication.principal.displayName}">User</strong> :
+                        <span th:text="${comment.content != null ? comment.content : '댓글 내용 없음'}">대화이력 내용</span>
+
+                        <!-- createdAt이 null이 아닐 경우 날짜 포맷 -->
+                        <span th:if="${comment.createdAt != null}" th:text="${#dates.format(comment.createdAt, 'yyyy-MM-dd HH:mm:ss')}">날짜</span>
+                        <span th:unless="${comment.createdAt != null}">날짜 정보 없음</span>
+                    </p>
+                </div>
+            </div>
+            <div th:unless="${comments != null and not #lists.isEmpty(comments)}">
+                <p>대회이력이 없습니다.</p>
+            </div>
+        </div>
+
+        <!-- 댓글 작성 폼 -->
+        <div class="comment-form-section">
+            <h4>대화내용 작성</h4>
+            <form action="/comment" method="POST" class="comment-form">
+                <input type="hidden" name="parent" th:value="${jobkorea.id}">  <!-- parent 설정 -->
+                <input type="hidden" name="type" value="jobkorea">  <!-- type 추가 -->
+                <input type="hidden" name="referer" th:value="${referer}"> <!-- referer 추가 -->
+                <input type="text" name="content" placeholder="대화이력을 입력하세요" required>
+                <!-- createdAt 필드를 추가 -->
+                <input type="hidden" name="createdAt" th:value="${#dates.format(new java.util.Date(), 'yyyy-MM-dd HH:mm')}">
+                <button type="submit">전송</button>
+            </form>
+        </div>
+    </div>
+
+    <!-- JavaScript -->
+    <script>
+        function submitDeleteForm() {
+            if (confirm('정말 삭제하시겠습니까?')) {
+                document.getElementById('deleteForm').submit();
+            }
+        }
+    </script>
+</div>
+</body>
+
+    </html>

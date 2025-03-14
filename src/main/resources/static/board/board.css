@@ -1,0 +1,149 @@
+/* 전체 페이지 스타일 */
+body {
+    font-family: Arial, sans-serif;
+    background-color: #f8f9fa;
+    margin: 0;
+    padding: 0;
+    text-align: center;
+}
+
+/* 검색 폼 스타일 */
+.customer-search-form {
+    display: flex;
+    justify-content: center;
+    margin-top: 20px;
+}
+
+.customer-search-input {
+    width: 300px;
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    font-size: 14px;
+}
+
+.customer-search-button {
+    margin-left: 8px;
+    padding: 10px 15px;
+    background-color: #007bff;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 14px;
+    transition: all 0.3s ease;
+}
+
+.customer-search-button:hover {
+    background-color: #0056b3;
+    transform: scale(1.05);
+}
+
+/* 작성 버튼 스타일 */
+.customer-add-button {
+    display: block;
+    margin: 20px auto;
+    padding: 12px 20px;
+    background-color: #28a745;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    font-size: 16px;
+    font-weight: bold;
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+.customer-add-button:hover {
+    background-color: #218838;
+    transform: scale(1.05);
+}
+
+/* 게시판 테이블 스타일 */
+.board-table {
+    width: 70%;
+    margin: 30px auto;
+    border-collapse: collapse;
+    background-color: white;
+    border-radius: 8px;
+    overflow: hidden;
+    box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.1);
+    table-layout: fixed;
+}
+
+/* 테이블 헤더 */
+.board-table th {
+    background-color: #007bff;
+    color: white;
+    padding: 14px;
+    text-align: center;
+    font-size: 16px;
+    border-bottom: 2px solid #ddd;
+}
+
+/* 테이블 셀 */
+.board-table td {
+    padding: 12px;
+    text-align: center;
+    font-size: 14px;
+    border-bottom: 1px solid #ddd;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+/* 내용 부분 스타일 */
+.board-table .board-content-text {
+    max-width: 350px;
+    width: 100%;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    text-align: left;
+}
+
+/* 버튼 스타일 */
+.board-table button {
+    padding: 6px 12px;
+    border: none;
+    cursor: pointer;
+    border-radius: 5px;
+    font-size: 14px;
+    color: white;
+    transition: all 0.3s ease;
+
+}
+.editbt {
+background-color: #28a745;
+    color: white;
+}
+
+.editbt:hover {
+    background-color: #218838;
+}
+.delectbt {
+background-color: #dc3545;
+    color: white;
+}
+.delectbt:hover {
+    background-color: #c82333;
+}
+/* 수정 버튼 */
+.board-table .edit-btn {
+    background-color: #17a2b8;
+}
+
+.board-table .edit-btn:hover {
+    background-color: #138496;
+    transform: scale(1.05);
+}
+
+/* 삭제 버튼 */
+.board-table .delete-btn {
+    background-color: #dc3545;
+}
+
+.board-table .delete-btn:hover {
+    background-color: #c82333;
+    transform: scale(1.05);
+}

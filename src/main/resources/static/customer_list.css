@@ -1,0 +1,114 @@
+/* 기본 리셋 */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+/* 바디 스타일 */
+body {
+    font-family: 'Arial', sans-serif;
+    background-color: #f4f7fb; /* 연한 배경색 */
+    color: #333;
+
+}
+
+.customer-container {
+    width: 80%;
+    margin: 0 auto;
+    background: white;
+    padding: 20px;
+    border-radius: 8px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+
+.customer-title {
+    text-align: center;
+    color: #333;
+}
+
+.customer-search-form {
+    display: flex;
+    justify-content: center;
+    margin-bottom: 20px;
+}
+
+.customer-search-input {
+    padding: 8px;
+    width: 300px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+}
+
+.customer-search-button {
+    margin-left: 10px;
+    padding: 8px 15px;
+    background-color: #007bff;
+    color: white;
+    border: none;
+    cursor: pointer;
+    border-radius: 4px;
+}
+
+.customer-search-button:hover {
+    background-color: #0056b3;
+}
+
+.customer-table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 20px;
+}
+
+.customer-table th, .customer-table td {
+    border: 1px solid #ddd;
+    padding: 10px;
+    text-align: center;
+}
+
+.customer-table th {
+    background-color: #007bff;
+    color: white;
+}
+
+.customer-edit-button, .customer-delete-button {
+    padding: 5px 10px;
+    border: none;
+    cursor: pointer;
+    border-radius: 4px;
+}
+
+.customer-edit-button {
+    background-color: #28a745;
+    color: white;
+}
+
+.customer-edit-button:hover {
+    background-color: #218838;
+}
+
+.customer-delete-button {
+    background-color: #dc3545;
+    color: white;
+}
+
+.customer-delete-button:hover {
+    background-color: #c82333;
+}
+
+.customer-add-button {
+    display: block;
+    width: 100%;
+    margin-top: 20px;
+    padding: 10px;
+    background-color: #007bff;
+    color: white;
+    border: none;
+    cursor: pointer;
+    border-radius: 4px;
+    text-align: center;
+}
+
+.customer-add-button:hover {
+    background-color: #0056b3;
+}
