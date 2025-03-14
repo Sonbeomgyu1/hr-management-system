@@ -5,12 +5,15 @@
 이 시스템은 **잡코리아에서 검색한 프리랜서고객목록 및 잡코리아고객목록 고객을 효율적으로 관리**할 수 있도록 설계되었습니다.
 
 ### 🏢 **주요 기능**
-- **로컬로 접속시:** localhost:8080에 접속하면 로그인 필수. 로그인을 하면 메인 페이지에서 풀캘린더를 확인할 수 있습니다.
+
+- **프리랜서 및 잡코리아 목록 검색/수정/삭제 기능**
+- 
+- **로컬 환경 접속:** localhost:8080에서 로그인 후 메인 페이지의 풀캘린더 확인 가능.
 - ![image](https://github.com/user-attachments/assets/fff1b3f4-6f14-49dc-8baf-f02a39ad6dec)
 ![image](https://github.com/user-attachments/assets/3c581d2e-17d7-4563-838c-2f7f3e4bb40f)
 
 
-- **프리랜서 수정/삭제 및 고객 목록 이동 / 댓글기능관련 기능:**
+- **프리랜서**: 검색, 등록, 수정, 삭제 및 고객 목록 이동 기능 제공.
   - **프리랜서 리스트 페이지**에서 **검색 기능 :** 등록자, 지역, 이름, 기술, 업무, 경력 등을 기준으로 검색할 수 있습니다.
    - ![image](https://github.com/user-attachments/assets/a7744c8c-e133-4562-b7bf-29c2e1c9cc21)
   - **프리랜서 등록:** 프리랜서 등록 페이지에서 프리랜서를 등록하면 해당 정보가 시스템에 자동으로 저장됩니다.
@@ -23,7 +26,7 @@
   
   
  
-- **잡코리아 수정/삭제 및 고객 목록 이동 / 댓글기능관련 기능:**
+- **잡코리아 관리**:검색, 등록, 수정, 삭제 및 고객 목록 이동 기능 제공.
   - **잡코리아 리스트 페이지**에서 **검색기능**: 유형, 등록자, 지역, 이름, 기술 등을 기준으로 검색할 수 있습니다.
   - ![image](https://github.com/user-attachments/assets/db3a5f81-fad6-4c7a-99e5-15cfbe155ee5)
 
@@ -36,7 +39,6 @@
     ![image](https://github.com/user-attachments/assets/abd58aed-fb7a-4522-932b-33b48826d393)
     ![image](https://github.com/user-attachments/assets/b9426e6a-4edd-41b3-96c6-ed77eaf8c999)
 
-  - **게시판:**  
   - 게시판은 **기본적인 CRUD 기능**을 지원하여 게시판 역할을 수행할 수 있습니다.
     ![image](https://github.com/user-attachments/assets/153e94f4-e115-46b8-9b36-687a10a4d4ab)
 
