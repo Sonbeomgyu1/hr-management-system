@@ -7,9 +7,9 @@
 ### 🏢 **주요 기능**
 
 - **프리랜서 및 잡코리아 목록 검색/수정/삭제 기능**
-- 
+ 
 - **로컬 환경 접속:** localhost:8080에서 로그인 후 메인 페이지의 풀캘린더 확인 가능.
-- ![image](https://github.com/user-attachments/assets/fff1b3f4-6f14-49dc-8baf-f02a39ad6dec)
+ ![image](https://github.com/user-attachments/assets/fff1b3f4-6f14-49dc-8baf-f02a39ad6dec)
 ![image](https://github.com/user-attachments/assets/3c581d2e-17d7-4563-838c-2f7f3e4bb40f)
 
 
@@ -49,7 +49,7 @@
 - **권한별 페이지 구분 (ROLE_ADMIN / ROLE_USER)**  
   - **ROLE_ADMIN**: 관리자 전용 페이지 접근 가능  
   - **ROLE_USER**: 일반 사용자는 관리자 페이지 접근 불가
-  - ![image](https://github.com/user-attachments/assets/82af6be8-1f7e-44dd-a276-962f757033e9)
+   ![image](https://github.com/user-attachments/assets/82af6be8-1f7e-44dd-a276-962f757033e9)
 
 - **풀캘린더(FullCalendar) 기반 일정 관리**  
   - 메인 페이지에서 **풀캘린더를 활용한 CRUD 기능 제공**  
