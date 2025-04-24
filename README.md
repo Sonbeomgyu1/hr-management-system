@@ -12,10 +12,10 @@
 - **잡코리아 관리**: 검색, 등록, 수정, 삭제 및 고객 목록 이동 , 대화이력(댓글) 기능
 - **게시판 CRUD**: 기본적인 게시판 기능 제공
 - **고객 목록 조회**: 로그인한 사용자 ID별 필터링된 목록 조회 , 대화이력(댓글) 기능
-- **권한 관리**: 관리자(ROLE_ADMIN)와 사용자(ROLE_USER) 구분
 - **풀캘린더 일정 관리**: CRUD 기능 제공
 - **프로젝트 일정 관리**: CRUD 기능 제공, 고객목록 조회에서 추가된 데이터를 가져와 고객을 프로젝트에 추가할수있도록 구현
 - **Mypage 관리**: CRUD 기능 제공
+- **권한 관리**: 관리자(ROLE_ADMIN)와 사용자(ROLE_USER) 구분
 
 
   
@@ -66,11 +66,6 @@
   - 고객 목록은 **로그인한 사용자 ID에 따라 필터링**되어, **본인의 고객 목록만 조회 가능**합니다.
     ![image](https://github.com/user-attachments/assets/ecbe5706-9b54-4026-bc36-838409d43923)
 
-- **권한별 페이지 구분 (ROLE_ADMIN / ROLE_USER)**  
-  - **ROLE_ADMIN**: 관리자 전용 페이지 접근 가능  
-  - **ROLE_USER**: 일반 사용자는 관리자 페이지 접근 불가
-   ![image](https://github.com/user-attachments/assets/82af6be8-1f7e-44dd-a276-962f757033e9)
-
 - **풀캘린더(FullCalendar) 기반 일정 관리**  
   - 메인 페이지에서 **풀캘린더를 활용한 CRUD 기능 제공**  
   - 해당 날짜의 라벨 별로 클릭시 일정 추가, 수정, 삭제 가능  
@@ -86,6 +81,9 @@
     ![image](https://github.com/user-attachments/assets/e361db40-9c99-412d-9bdb-588ffbb506fb)
 
 - **MyPage 관리**
+- **권한별 페이지 구분 (ROLE_ADMIN / ROLE_USER)**  
+  - **ROLE_ADMIN**: 관리자 전용 페이지 접근 가능  
+  - **ROLE_USER**: 일반 사용자는 관리자 페이지 접근 불가
 - MyPage페이지는 **ROLE_ADMIN/ROLE_USER 표시, 출퇴근기록추가, 파일업로드기능추가**
 - **출퇴근기록** 근태유형, 출근시간(클릭하는날짜 및 시간) 기록추가 가능 출퇴근기록은 ROLE_ADMIN 권한 가진 ID는 기록을 다 볼수있고
 - ROLE_USER는 본인의 ID만 확인할수있도록 구현함.
