@@ -1,0 +1,274 @@
+body {
+    font-family: 'Noto Sans KR', sans-serif;
+    background-color: #f0f2f5;
+    color: #2c3e50;
+}
+
+/* 메인 컨테이너 */
+.container {
+    max-width: 1000px;
+    margin: 40px auto;
+    padding: 30px;
+    background: white;
+    border: 1px solid #e0e0e0;
+    border-radius: 10px;
+}
+
+/* 마이페이지 카드 */
+.mypage-card {
+    padding: 25px;
+    border: 1px solid #ccc;
+    border-radius: 8px;
+    background-color: #fafafa;
+    margin-bottom: 30px;
+    text-align: left;
+}
+
+/* 유저 정보 */
+.user-info p {
+    font-size: 15px;
+    margin: 6px 0;
+    color: #34495e;
+    
+}
+
+/* 권한 스타일 */
+.user-role, .admin-role {
+    padding: 6px 12px;
+    border-radius: 4px;
+    display: inline-block;
+    margin-top: 5px;
+    font-weight: bold;
+}
+
+.user-role {
+    background-color: #e0e0e0;
+    color: white;
+}
+.clock {
+        font-size: 15px;
+        margin: 6px 0;
+        color: #fff;
+        background-color: #3498db;
+        border: 1px solid #2980b9;
+        padding: 4px 8px;
+        border-radius: 4px;
+        cursor: pointer;
+        transition: all 0.3s ease;
+    }
+
+    .clock:hover {
+        background-color: #2980b9;
+        border-color: #1c5980;
+        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    }
+
+    .clock:focus {
+        outline: none;
+        box-shadow: 0 0 0 2px rgba(52, 152, 219, 0.6);
+    }
+
+    .clock:active {
+        background-color: #1c5980;
+        border-color: #155a74;
+        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.15);
+    }
+
+.admin-role {
+    background-color: #e67e22;
+    color: white;
+}
+.contract-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-top: 30px;
+    margin-bottom: 15px;
+}
+
+.contract-header h3 {
+    margin: 0 auto;
+    position: absolute;
+    left: 50%;
+    transform: translateX(-50%);
+    font-size: 20px;
+    font-weight: bold;
+}
+
+.contract-header .upload-btn {
+    margin-left: auto;
+}
+
+/* 테이블 */
+.mypage-table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 20px;
+    font-size: 14px;
+}
+
+.mypage-table th,
+.mypage-table td {
+    padding: 12px;
+    border: 1px solid #ddd;
+    text-align: center;
+}
+
+.mypage-table th {
+    background-color: #f8f9fa;
+    color: #2c3e50;
+    font-weight: 600;
+}
+
+.mypage-table tbody tr:hover {
+    background-color: #f0f8ff;
+}
+
+/* 버튼 스타일 */
+.upload-btn, .logout-btn {
+    padding: 10px 18px;
+    font-size: 14px;
+    border: none;
+    border-radius: 6px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+.upload-btn {
+    background-color: #2980b9;
+    color: white;
+    margin-bottom: 20px;
+}
+
+.upload-btn:hover {
+    background-color: #2471a3;
+}
+
+.logout-btn {
+    background-color: #c0392b;
+    color: white;
+    margin-top: 15px;
+}
+
+.logout-btn:hover {
+    background-color: #a93226;
+}
+
+/* 삭제 버튼 */
+form button[type="submit"] {
+    
+    border: none;
+    color: white;
+    padding: 6px 12px;
+    border-radius: 4px;
+    font-size: 13px;
+    cursor: pointer;
+    transition: background-color 0.2s;
+}
+
+form button[type="submit"]:hover {
+    background-color: #95a5a6;
+}
+
+
+.expired {
+  background-color: #ffe5e5;
+  color: #c0392b;
+  font-weight: bold;
+}
+
+/* 반응형 */
+@media (max-width: 768px) {
+    .mypage-table th,
+    .mypage-table td {
+        font-size: 13px;
+        padding: 8px;
+    }
+
+    .upload-btn, .logout-btn {
+        width: 100%;
+        margin-top: 10px;
+    }
+}
+/* 출퇴근 기록 추가 폼 */
+.attendance-form {
+    background-color: #fafafa;
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+    width: 100%;
+    max-width: 600px;
+    margin: 0 auto;
+}
+
+.attendance-form h2 {
+    text-align: center;
+    font-size: 22px;
+    color: #2c3e50;
+    margin-bottom: 20px;
+}
+
+.form-group {
+    margin-bottom: 20px;
+}
+
+.form-group label {
+    display: block;
+    font-size: 16px;
+    color: #34495e;
+    margin-bottom: 5px;
+}
+
+.form-group select, .form-group input {
+    width: 100%;
+    padding: 10px;
+    font-size: 16px;
+    border-radius: 6px;
+    border: 1px solid #ccc;
+    box-sizing: border-box;
+}
+
+.time-input {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.time-input input {
+    width: 75%;
+    margin-right: 10px;
+}
+
+.time-btn {
+    background-color: #2980b9;
+    color: white;
+    padding: 10px 20px;
+    border-radius: 6px;
+    border: none;
+    cursor: pointer;
+    font-size: 14px;
+    transition: background-color 0.3s ease;
+}
+
+.time-btn:hover {
+    background-color: #2471a3;
+}
+
+.submit-btn {
+    width: 100%;
+    background-color: #4CAF50;
+    color: white;
+    padding: 12px;
+    border-radius: 6px;
+    border: none;
+    font-size: 16px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+.submit-btn:hover {
+    background-color: #45a049;
+}
+
+
+

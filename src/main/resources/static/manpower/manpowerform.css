@@ -1,0 +1,89 @@
+
+    /* 전체 컨테이너 여백 조정 */
+.container {
+  padding: 40px;
+  background-color: #f9fafb;
+}
+
+/* 제목 스타일 */
+h2.text-center {
+  font-weight: 700;
+  font-size: 1.6rem;
+  margin-bottom: 30px;
+  color: #1f2937;
+}
+
+/* 테이블 공통 스타일 */
+.erp-table {
+  width: 100%;
+  border-collapse: separate;
+  border-spacing: 0;
+  background-color: #ffffff;
+  border-radius: 12px;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.03);
+  margin-bottom: 40px;
+  overflow: hidden;
+}
+
+/* 테이블 헤더 스타일 */
+.erp-table thead {
+  background-color: #f3f4f6;
+}
+.erp-table th {
+  padding: 14px 16px;
+  text-align: center;
+  font-weight: 600;
+  color: #374151;
+  border-bottom: 1px solid #e5e7eb;
+}
+
+/* 테이블 셀 스타일 */
+.erp-table td {
+  padding: 14px 16px;
+  border-bottom: 1px solid #f1f5f9;
+  vertical-align: middle;
+  background-color: #fff;
+}
+
+/* 입력 필드 스타일 */
+.erp-table input,
+.erp-table select,
+.erp-table textarea {
+  width: 100%;
+  padding: 10px 12px;
+  border: 1px solid #d1d5db;
+  border-radius: 8px;
+  background-color: #fff;
+  font-size: 0.95rem;
+  transition: border-color 0.2s;
+}
+
+.erp-table input:focus,
+.erp-table select:focus,
+.erp-table textarea:focus {
+  border-color: #6366f1;
+  outline: none;
+  box-shadow: 0 0 0 3px rgba(99,102,241,0.1);
+}
+
+/* 폼 제출 버튼 영역 여유 */
+form button[type="submit"] {
+  margin-top: 20px;
+}
+    /* 반응형 대응 */
+    @media (max-width: 768px) {
+        .container {
+            padding: 20px;
+        }
+
+        table.table th,
+        table.table td {
+            font-size: 0.85rem;
+            padding: 10px;
+        }
+
+        button[type="submit"] {
+            width: 100%;
+        }
+    }
+

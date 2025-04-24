@@ -1,0 +1,68 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0" name="viewport">
+    <meta content="ie=edge" http-equiv="X-UA-Compatible">
+    <title>게시판</title>
+    <link href="/main.css" rel="stylesheet">
+    <link href="/board/board.css" rel="stylesheet">
+
+</head>
+<body>
+<div th:replace="~{ nav.html::navbar }"></div>
+
+<!-- 검색 폼 -->
+<div class="customer-search-form">
+    <form action="/boardsearch" method="POST">
+        <input name="searchText" type="text" class="customer-search-input" placeholder="검색">
+        <button type="submit" class="customer-search-button">검색</button>
+    </form>
+</div>
+
+<button class="customer-add-button" onclick="location.href='/boardwrite'">✍️ 작성</button> <!-- 중앙 정렬된 작성 버튼 -->
+
+<!-- 게시판 테이블 -->
+<table class="board-table">
+    <thead>
+    <tr>
+        <th>번호</th>
+        <th>제목</th>
+        <th>내용</th>
+        <th>관리</th>
+    </tr>
+    </thead>
+    <tbody>
+    <tr th:each="i, iterStat : ${boards}">
+        <td th:text="${iterStat.count}">1</td> <!-- 자동 증가 번호 -->
+        <td>
+            <a th:href="@{'/boarddetail/' + ${i.id}}" th:text="${i.boardtitle}">제목</a>
+        </td>
+        <td class="board-content-text" th:text="${i.boardcontent}">내용</td>
+        <td>
+            <button class="editbt" th:onclick="|location.href='@{/boardedit/{id}(id=${i.id})}'|">✏️ 수정</button>
+            <button class="delectbt" th:onclick="|if(confirm('삭제하시겠습니까?')) {
+            fetch('/board?id=${i.id}', { method: 'DELETE' })
+            .then(r => r.text())
+            .then(() => { location.reload(); }) }|">
+                🗑️ 삭제
+            </button>
+        </td>
+    </tr>
+    </tbody>
+</table>
+
+<script>
+    document.addEventListener("DOMContentLoaded", function () {
+        const boardContentTexts = document.querySelectorAll('.board-content-text');
+
+        boardContentTexts.forEach(function (element) {
+            let content = element.textContent; // innerHTML 대신 textContent 사용
+            // 줄바꿈을 <br>로 변환하지 않음
+            element.textContent = content; // 그냥 텍스트 그대로 사용
+        });
+    });
+</script>
+
+</body>
+</html>

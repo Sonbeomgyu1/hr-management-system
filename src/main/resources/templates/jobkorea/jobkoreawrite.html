@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>잡코리아 데이터 등록</title>
+    <link href="/main.css" rel="stylesheet">
+    <link href="jobkorea/jobkorea.css" rel="stylesheet">
+
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css">
+
+</head>
+<body>
+<div th:replace="~{ nav.html::navbar }"></div>
+<div class="container">
+    <h2 class="text-center">잡코리아 데이터 등록</h2>
+    <form action="/jobkoreaadd" method="post">
+        <table class="table table-bordered table-striped">
+            <thead>
+            <tr>
+                <th>등록자</th>
+                <th>등록자 유형</th>
+                <th>이름</th>
+                <th>생년월일</th>
+            </tr>
+            </thead>
+            <tbody>
+            <tr>
+                <!-- DisplayName은 사용자가 입력하지 않으므로, hidden 필드로 처리하거나 해당 값은 서버에서 자동으로 받아오기 -->
+                <td>
+                    <input type="text" name="displayName" class="form-control"
+                           th:value="${#authentication.principal.displayName}" readonly>
+                </td>
+                <td>
+                    <div class="select-wrapper">
+                        <select name="jobkoreatypecd" class="form-control">
+                            <option value="FREELANCER">프리랜서</option>
+                            <option value="FULLTIME">정규직</option>
+                            <option value="BUSINESS">사업자</option>
+                        </select>
+                        <span class="custom-arrow"></span>
+                    </div>
+                </td>
+
+                <td><input type="text" name="name" class="form-control"></td>
+                <td><input type="text" name="birthday" class="form-control"></td>
+            </tr>
+            </tbody>
+        </table>
+
+        <table class="table table-bordered table-striped">
+            <thead>
+            <tr>
+                <th>서칭일</th>
+                <th>진행사항</th>
+                <th>지역</th>
+                <th>프리랜서 ID</th>
+            </tr>
+            </thead>
+            <tbody>
+            <tr>
+                <!-- searchDate는 input[type="date"]로 날짜를 받음 -->
+                <td><input type="date" name="searchdate" class="form-control"></td>
+                <td><textarea name="progressDesc" class="form-control"></textarea></td>
+                <td><input type="text" name="area" class="form-control"></td>
+                <td><input type="number" name="manpowerId" class="form-control"></td>
+            </tr>
+            </tbody>
+        </table>
+
+        <table class="table table-bordered table-striped">
+            <thead>
+            <tr>
+                <th>잡코리아 아이디</th>
+                <th>철수일자</th>
+                <th>연락번호</th>
+                <th>메일주소</th>
+            </tr>
+            </thead>
+            <tbody>
+            <tr>
+                <td><input type="text" name="jobKoreaId" class="form-control"></td>
+                <td><input type="date" name="outDate" class="form-control"></td>
+                <td><input type="text" name="contactNum" class="form-control"></td>
+                <td><input type="email" name="email" class="form-control"></td>
+            </tr>
+            </tbody>
+        </table>
+
+        <table class="table table-bordered table-striped">
+            <thead>
+            <tr>
+                <th>주요스킬</th>
+                <th>경력</th>
+                <th>희망단가</th>
+                <th>서칭플젝명</th>
+            </tr>
+            </thead>
+            <tbody>
+            <tr>
+                <td><input type="text" name="skill" class="form-control"></td>
+                <td><input type="text" name="carrer" class="form-control"></td>
+                <td><input type="text" name="hopePrice" class="form-control"></td>
+                <td><input type="text" name="projectNm" class="form-control"></td>
+            </tr>
+            </tbody>
+        </table>
+
+        <div class="text-center">
+            <button type="submit" class="btn btn-primary">등록</button>
+        </div>
+    </form>
+<!--    <form method="post" action="/linkManPower">-->
+<!--        <input type="hidden" name="jobKoreaId" value="${jobKorea.id}">-->
+<!--        <input type="text" name="manpowerId" placeholder="Enter ManPower ID">-->
+<!--        <button type="submit">ManPower 연결</button>-->
+<!--    </form>-->
+
+
+</div>
+</body>
+</html>

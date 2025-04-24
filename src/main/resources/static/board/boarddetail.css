@@ -1,0 +1,65 @@
+/* 기본적인 스타일 리셋 */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+/* 페이지 배경 및 기본 텍스트 설정 */
+body {
+    font-family: 'Segoe UI', 'Roboto', 'Arial', sans-serif;
+    background-color: #f4f7fa;
+    padding: 20px;
+    color: #2d3748;
+}
+
+/* 상세 페이지 스타일 */
+.detail {
+    max-width: 900px;
+    margin: 60px auto;
+    padding: 40px 32px;
+    background-color: #ffffff;
+    border-radius: 10px;
+    box-shadow: 0 8px 24px rgba(0, 0, 0, 0.08);
+    font-size: 17px;
+    line-height: 1.7;
+}
+
+/* 제목 스타일 */
+h2 {
+    font-size: 32px;
+    font-weight: 700;
+    color: #2b6cb0;
+    text-align: center;
+    margin-bottom: 35px;
+    letter-spacing: 0.5px;
+}
+
+/* 게시판 제목 스타일 */
+.board-title {
+    font-size: 26px;
+    font-weight: 600;
+    color: #2d3748;
+    margin-bottom: 24px;
+    padding-bottom: 12px;
+    border-bottom: 2px solid #e2e8f0;
+}
+
+/* 게시판 내용 스타일 */
+.board-content {
+    font-size: 18px;
+    color: #4a5568;
+    line-height: 1.75;
+    margin-bottom: 40px;
+    white-space: pre-line;
+}
+
+/* 게시판 날짜 스타일 */
+.board-date {
+    font-size: 14px;
+    color: #718096;
+    text-align: right;
+    font-style: normal;
+    padding-top: 12px;
+    border-top: 1px solid #edf2f7;
+}

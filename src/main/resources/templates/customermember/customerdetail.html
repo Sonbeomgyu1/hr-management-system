@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>고객 상세정보</title>
+    <link href="/main.css" rel="stylesheet">
+    <link href="/customer_detail.css" rel="stylesheet">
+</head>
+<body>
+
+<div th:replace="~{nav.html::navbar}"></div>
+
+<div class="detail">
+    <h4>고객 상세 페이지</h4>
+    <table>
+        <tr>
+            <th>이름</th>
+            <td th:text="${customer.name}"></td>
+        </tr>
+        <tr>
+            <th>지역</th>
+            <td th:text="${customer.region}"></td>
+        </tr>
+        <tr>
+            <th>전화번호</th>
+            <td th:text="${customer.phoneNumber}"></td>
+        </tr>
+        <tr>
+            <th>기술</th>
+            <td th:text="${customer.skill}"></td>
+        </tr>
+        <tr>
+            <th>등급</th>
+            <td th:text="${customer.grade}"></td>
+        </tr>
+        <tr>
+            <th>내용</th>
+            <td th:text="${customer.content}"></td>
+        </tr>
+        <tr>
+            <th>입력 날짜</th>
+            <td th:text="${customer.createdDate}"></td>
+        </tr>
+    </table>
+
+
+
+    <!-- 댓글 출력 -->
+    <h3>댓글</h3>
+    <div th:if="${comments != null and not #lists.isEmpty(comments)}">
+        <div th:each="comment : ${comments}">
+            <p>
+                <strong th:text="${comment.username}">User</strong>:
+                <span th:text="${comment.content != null ? comment.content : '댓글 내용 없음'}">댓글 내용</span>
+            </p>
+        </div>
+    </div>
+    <div th:unless="${comments != null and not #lists.isEmpty(comments)}">
+        <p>댓글이 없습니다.</p>
+    </div>
+
+    <!-- 댓글 작성 폼 -->
+    <!-- 댓글 작성 폼 -->
+    <form action="/comment" method="POST">
+        <input type="hidden" name="parent" th:value="${customer.id}">  <!-- parent 설정 -->
+        <input type="hidden" name="type" value="customer">  <!-- type 추가 -->
+        <input type="hidden" name="referer" th:value="${referer}"> <!-- referer 추가 -->
+        <input type="text" name="content" placeholder="댓글을 입력하세요" required>
+        <button type="submit">전송</button>
+    </form>
+    <button onclick="location.href='/customerlist'">목록으로</button>
+
+
+</div>
+
+</body>
+</html>

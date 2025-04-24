@@ -1,0 +1,149 @@
+/* 기본 리셋 */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+/* 바디 */
+body {
+    font-family: 'Noto Sans KR', 'Roboto', sans-serif;
+    background-color: #e9edf3;
+    color: #2f2f2f;
+    line-height: 1.5;
+}
+
+/* 컨테이너 */
+.customer-container {
+    width: 90%;
+    max-width: 1200px;
+    margin: 40px auto;
+    background: #ffffff;
+    padding: 30px;
+    border-radius: 12px;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
+}
+
+/* 타이틀 */
+.customer-title {
+    text-align: center;
+    font-size: 24px;
+    font-weight: 600;
+    margin-bottom: 30px;
+    color: #1a1a1a;
+}
+
+/* 검색 폼 */
+.customer-search-form {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 10px;
+    margin-bottom: 30px;
+}
+
+.customer-search-input {
+    padding: 10px 15px;
+    width: 300px;
+    border: 1px solid #ccc;
+    border-radius: 6px;
+    font-size: 14px;
+    transition: border 0.3s;
+}
+
+.customer-search-input:focus {
+    border-color: #007bff;
+    outline: none;
+}
+
+.customer-search-button {
+    padding: 10px 18px;
+    background-color: #0066cc;
+    color: white;
+    border: none;
+    border-radius: 6px;
+    cursor: pointer;
+    font-size: 14px;
+    transition: background-color 0.3s;
+}
+
+.customer-search-button:hover {
+    background-color: #004e99;
+}
+
+/* 테이블 */
+.customer-table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 20px;
+    font-size: 14px;
+}
+
+.customer-table th,
+.customer-table td {
+    border: 1px solid #d1d5db;
+    padding: 12px;
+    text-align: center;
+}
+
+.customer-table th {
+    background-color: #003366;
+    color: #ffffff;
+    font-weight: 500;
+}
+
+.customer-table tr:nth-child(even) {
+    background-color: #f8f9fa;
+}
+
+.customer-table tr:hover {
+    background-color: #eef3f8;
+}
+
+/* 버튼 */
+.customer-edit-button,
+.customer-delete-button {
+    padding: 6px 12px;
+    border: none;
+    border-radius: 4px;
+    font-size: 13px;
+    cursor: pointer;
+    transition: background-color 0.2s ease;
+}
+
+.customer-edit-button {
+    background-color: #28a745;
+    color: #fff;
+}
+
+.customer-edit-button:hover {
+    background-color: #218838;
+}
+
+.customer-delete-button {
+    background-color: #dc3545;
+    color: #fff;
+}
+
+.customer-delete-button:hover {
+    background-color: #c82333;
+}
+
+/* 추가 버튼 */
+.customer-add-button {
+    margin-top: 30px;
+    padding: 12px;
+    background-color: #003366;
+    color: #ffffff;
+    font-size: 16px;
+    border: none;
+    cursor: pointer;
+    border-radius: 6px;
+    text-align: center;
+    width: 100%;
+    transition: background-color 0.3s;
+}
+
+.customer-add-button:hover {
+    background-color: #001f4d;
+}

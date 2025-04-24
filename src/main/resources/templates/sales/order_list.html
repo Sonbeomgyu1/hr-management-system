@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>주문 내역</title>
+    <link href="/main.css" rel="stylesheet">
+    <link href="/order/order.css" rel="stylesheet">
+
+</head>
+<body>
+<div th:replace="~{ nav.html::navbar }"></div>
+<h2>주문 내역</h2>
+
+<!-- 날짜별 주문 내역 -->
+<div th:each="entry : ${ordersByDate}">
+    <h3 th:text="${entry.key}">날짜</h3> <!-- 날짜 표시 -->
+    <table>
+        <thead>
+        <tr>
+            <th>상품명</th>
+            <th>가격</th>
+            <th>수량</th>
+            <th>구매자</th>
+            <th>주문 날짜</th>
+        </tr>
+        </thead>
+        <tbody>
+        <!-- 날짜별로 해당하는 주문 내역 표시 -->
+        <tr th:each="order : ${entry.value}">
+            <td th:text="${order.itemName}"></td>
+            <td th:text="${order.price}"></td>
+            <td th:text="${order.count}"></td>
+            <td th:text="${order.member.displayName}"></td>
+            <td th:text="${#temporals.format(order.created, 'yyyy-MM-dd HH:mm:ss')}"></td>
+        </tr>
+        </tbody>
+    </table>
+</div>
+</body>
+</html>

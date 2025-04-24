@@ -1,0 +1,143 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+
+<head>
+	<meta charset="UTF-8">
+	<title>프로젝트 상세</title>
+	<link href="/main.css" rel="stylesheet">
+	<link href="/project/projectdetail.css" rel="stylesheet">
+</head>
+
+<body>
+<div th:replace="~{ nav.html::navbar }"></div>
+
+	<div class="container">
+		<h1>📋 프로젝트 상세</h1>
+
+		<!-- 프로젝트 ID를 바인딩 -->
+		<div id="project" th:attr="data-project-id=${project.id}"></div>
+
+		<!-- 프로젝트 상세 정보 테이블 -->
+		<table>
+			<thead>
+				<tr>
+					<th>ID</th>
+					<th>이름</th>
+					<th>설명</th>
+					<th>시작일</th>
+					<th>종료일</th>
+					<th>예산</th>
+				</tr>
+			</thead>
+			<tbody>
+				<tr>
+					<td th:text="${project.id}">1</td>
+					<td th:text="${project.name}">이름</td>
+					<td th:text="${project.description}">설명</td>
+					<td th:text="${project.startDate}">2024-01-01</td>
+					<td th:text="${project.endDate}">2024-12-31</td>
+					<td th:text="${#numbers.formatInteger(project.budget, 0, 'COMMA')}">10,000,000</td>
+				</tr>
+			</tbody>
+		</table>
+
+		<!-- 수정 버튼과 목록으로 돌아가기 버튼 -->
+		<div style="margin-top: 20px; text-align: right;">
+			<a th:href="@{/projects/{id}/edit(id=${project.id})}" class="btn">수정</a>
+			<a href="/projects/list" class="btn">목록으로 돌아가기</a>
+		</div>
+
+		<hr>
+
+		<h2>👥 프로젝트 멤버</h2>
+
+		<!-- 멤버 추가 폼 -->
+		<form id="memberForm">
+			<select name="customerMemberId" required>
+				<option value="">-- 고객 멤버 선택 --</option>
+				<!-- 자동 채워짐 -->
+			</select>
+			<input type="text" name="role" placeholder="역할 (예: Developer)" required />
+			<button type="submit">멤버 추가</button>
+		</form>
+
+		<!-- 멤버 목록 출력 -->
+		<ul id="memberList">
+			<li th:each="member : ${members}">
+				이름: <span th:text="${member.customerMember != null ? member.customerMember.name : 'N/A'}"></span>,
+				역할: <span th:text="${member.role}"></span>
+			</li>
+		</ul>
+
+	</div>
+
+	<script th:inline="javascript">
+		// Ajax 요청 및 멤버 추가 로직
+		const projectIdElement = document.getElementById("project");
+		const projectId = projectIdElement ? projectIdElement.getAttribute("data-project-id") : null;
+
+		if (!projectId) {
+			alert("프로젝트 ID가 없습니다. 페이지를 다시 확인해주세요.");
+		} else {
+			document.getElementById("memberForm").addEventListener("submit", function (e) {
+				e.preventDefault();
+
+				const customerMemberId = this.customerMemberId.value;
+				const role = this.role.value;
+
+				if (!customerMemberId) {
+					alert("고객 멤버를 선택해주세요.");
+					return;
+				}
+
+				fetch(`/projects/${projectId}/members`, {
+					method: "POST",
+					headers: {
+						"Content-Type": "application/json"
+					},
+					body: JSON.stringify({customerMemberId: Number(customerMemberId), role})
+				})
+					.then(res => {
+						if (!res.ok) throw new Error("멤버 추가 실패");
+						return res.json();
+					})
+					.then(data => {
+						alert("멤버가 추가되었습니다.");
+						loadMembers(data);
+					})
+					.catch(err => {
+						alert("오류 발생: " + err.message);
+					});
+			});
+
+			function loadMembers(members) {
+				const memberList = document.getElementById("memberList");
+				memberList.innerHTML = "";
+				members.forEach(member => {
+					const li = document.createElement("li");
+					li.innerHTML = `이름: ${member.customerMember?.name ?? 'N/A'}, 역할: ${member.role}`;
+					memberList.appendChild(li);
+				});
+			}
+		}
+		document.addEventListener("DOMContentLoaded", function () {
+			const customerSelect = document.querySelector("select[name='customerMemberId']");
+
+			fetch("/api/customerlist")
+				.then(res => res.json())
+				.then(data => {
+					data.forEach(member => {
+						const option = document.createElement("option");
+						option.value = member.id;
+						option.textContent = `${member.name} (${member.skill ?? '기술 없음'})`;
+						customerSelect.appendChild(option);
+					});
+				})
+				.catch(err => {
+					console.error("고객 멤버 불러오기 실패:", err);
+				});
+		});
+	</script>
+
+</body>
+</html>

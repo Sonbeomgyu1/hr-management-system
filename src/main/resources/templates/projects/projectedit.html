@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>프로젝트 수정</title>
+    <link href="/main.css" rel="stylesheet">
+    <link href="/project/projectedit.css" rel="stylesheet">
+</head>
+<body>
+<div th:replace="~{ nav.html::navbar }"></div>
+    <!-- 수정 페이지 컨테이너 -->
+<div class="container">
+    <h1>📋 프로젝트 수정</h1>
+
+    <form th:action="@{/projects/{id}(id=${project.id})}" method="post">
+        <input type="hidden" name="_method" value="put"/>
+        <label>이름: <input type="text" name="name" th:value="${project.name}"/></label><br/>
+        <label>설명: <input type="text" name="description" th:value="${project.description}"/></label><br/>
+        <label>시작일: <input type="date" name="startDate" th:value="${project.startDate}"/></label><br/>
+        <label>종료일: <input type="date" name="endDate" th:value="${project.endDate}"/></label><br/>
+        <label>예산: <input type="number" name="budget" th:value="${project.budget}"/></label><br/>
+        <input type="submit" value="수정 완료"/>
+    </form>
+
+    <br/>
+    <a href="/projects/list" class="btn">목록으로 돌아가기</a>
+</div> <!-- 컨테이너 끝 -->
+
+</body>
+</html>

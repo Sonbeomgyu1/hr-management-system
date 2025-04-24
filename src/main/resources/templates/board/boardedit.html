@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Edit Item</title>
+    <link href="/main.css" rel="stylesheet">
+    <link href="/board/boardedit.css" rel="stylesheet">
+</head>
+<body>
+<h2>board 수정페이지</h2>
+<form action="/boardedit" method="POST">
+    <input type="hidden" name="id" th:value="${data.id}">
+    <textarea name="boardtitle" th:text="${data.boardtitle}" placeholder="Enter board title"></textarea>
+    <textarea name="boardcontent" th:text="${data.boardcontent}" placeholder="Enter board content" style="height: 300px;"></textarea>
+    <button type="submit">Save</button>
+</form>
+</body>
+</html>

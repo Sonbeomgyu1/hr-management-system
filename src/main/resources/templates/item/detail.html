@@ -1,0 +1,60 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>상세 페이지</title>
+    <link rel="stylesheet" href="/main.css">
+    <link rel="stylesheet" href="/item/itemdetail.css">
+</head>
+<body class="bg-gray-100 text-gray-900">
+
+<!-- 네비게이션 -->
+<div th:replace="~{ nav.html::navbar }"></div>
+
+<div class="detail-container">
+    <h2 class="detail-title">상세페이지</h2>
+    <div class="detail-content">
+        <img class="detail-image" src="https://placehold.co/300" alt="상품 이미지">
+        <div class="detail-text">
+            <h3 class="product-title" th:text="${data.title}">금도금 바지</h3>
+            <p class="product-price" th:text="${data.price + '원'}">7억</p>
+        </div>
+    </div>
+</div>
+
+<!-- 주문 폼 -->
+<div class="order-container">
+    <h3 class="order-title">주문하기</h3>
+    <form action="/order" method="post" class="order-form">
+        <input name="title" th:value="${data.title}" type="hidden">
+        <input name="price" th:value="${data.price}" type="hidden">
+        <input name="count" placeholder="수량 입력" class="input-field">
+        <button class="order-button">주문하기</button>
+    </form>
+</div>
+
+<!-- 댓글 영역 -->
+<div class="comment-container">
+    <h3 class="comment-title">댓글</h3>
+    <div class="comment-list">
+        <div th:each="comment : ${comments}" class="comment-item">
+            <p class="comment-text">
+                <strong class="comment-username" th:text="${comment.username}">User</strong>:
+                <span th:text="${comment.content != null ? comment.content : '댓글 내용 없음'}">댓글 내용</span>
+            </p>
+        </div>
+    </div>
+
+    <!-- 댓글 입력 폼 -->
+    <form action="/comment" method="POST" class="comment-form">
+        <textarea name="content" placeholder="댓글 입력" class="input-field"></textarea>
+        <input type="hidden" name="parent" th:value="${data.id}">
+        <input type="hidden" name="type" value="item">
+        <button class="comment-button">전송</button>
+    </form>
+</div>
+
+</body>
+</html>

@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>특정 멤버의 출퇴근 기록</title>
+</head>
+<body>
+    <h1>회원 출퇴근 기록</h1>
+    
+    <h2 th:text="${attendances.get(0).member.displayName}"></h2>
+
+    <!-- 출퇴근 기록 목록 테이블 -->
+  <table>
+    <thead>
+        <tr>
+            <th>출퇴근 ID</th>
+            <th>출근 시간</th>
+            <th>퇴근 시간</th>
+            <th>근태 유형</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr th:each="attendance : ${attendances}">
+            <td th:text="${attendance.member.displayName}"></td> <!-- 현재 로그인한 사용자의 displayName -->
+            <td th:text="${attendance.checkIn}"></td>
+            <td th:text="${attendance.checkOut}"></td>
+            <td th:text="${attendance.type}"></td>
+        </tr>
+    </tbody>
+</table>
+
+
+    <a href="/attendance/list">출퇴근 기록 목록으로 돌아가기</a>
+</body>
+</html>

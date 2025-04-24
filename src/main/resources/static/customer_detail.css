@@ -1,0 +1,116 @@
+/* 고객 상세 페이지 (ERP 스타일) */
+.detail {
+    width: 90%;
+    max-width: 1000px;
+    margin: 50px auto;
+    padding: 40px;
+    border-radius: 12px;
+    background: #ffffff;
+    box-shadow: 0 6px 20px rgba(0, 0, 0, 0.08);
+}
+
+/* 타이틀 */
+.detail h4 {
+    font-size: 22px;
+    font-weight: 600;
+    color: #003366;
+    text-align: center;
+    margin-bottom: 30px;
+    padding-bottom: 10px;
+    border-bottom: 2px solid #007bff;
+}
+
+/* 고객 정보 테이블 */
+.detail table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 20px;
+    font-size: 14px;
+}
+
+.detail th, .detail td {
+    padding: 12px 15px;
+    text-align: left;
+    border: 1px solid #dee2e6;
+}
+
+.detail th {
+    background-color: #f0f4f8;
+    color: #333;
+    width: 20%;
+    font-weight: 500;
+}
+
+.detail td {
+    background-color: #ffffff;
+    color: #2c3e50;
+}
+
+/* 댓글 영역 */
+.comment-section {
+    margin-top: 40px;
+}
+
+.comment-section h3 {
+    font-size: 18px;
+    font-weight: 600;
+    color: #1a1a1a;
+    margin-bottom: 10px;
+}
+
+.comment-section p {
+    font-size: 14px;
+    margin-bottom: 8px;
+    color: #555;
+}
+
+/* 댓글 입력 */
+.comment-section .comment-form input[type="text"] {
+    width: 100%;
+    padding: 10px 15px;
+    border: 1px solid #ccc;
+    border-radius: 6px;
+    font-size: 14px;
+    margin-top: 10px;
+}
+
+.comment-section .comment-form button {
+    margin-top: 15px;
+    background-color: #003366;
+    color: white;
+    border: none;
+    padding: 10px 16px;
+    font-size: 14px;
+    border-radius: 6px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+.comment-section .comment-form button:hover {
+    background-color: #002244;
+}
+
+.comment-section .no-comments {
+    font-size: 14px;
+    color: #888;
+    margin-top: 10px;
+}
+
+/* 공통 버튼 */
+.detail button {
+    margin-top: 30px;
+    padding: 10px 18px;
+    background-color: #0066cc;
+    color: #ffffff;
+    font-size: 15px;
+    font-weight: 500;
+    border: none;
+    border-radius: 6px;
+    cursor: pointer;
+    transition: background-color 0.25s ease, transform 0.25s ease;
+}
+
+.detail button:hover {
+    background-color: #004f99;
+    transform: translateY(-2px);
+}

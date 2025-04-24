@@ -1,0 +1,173 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <title>WebSocket Chat</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            padding: 20px;
+        }
+        .chat-container {
+            max-width: 600px;
+            margin: 0 auto;
+        }
+        .input-group {
+            display: flex;
+            margin: 10px 0;
+            gap: 10px;
+        }
+        .room-list {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 10px;
+            margin-bottom: 10px;
+        }
+        .room-list-item {
+            padding: 6px 12px;
+            background-color: #eee;
+            border-radius: 6px;
+            cursor: pointer;
+        }
+        #chatBox {
+            height: 300px;
+            border: 1px solid #ccc;
+            padding: 10px;
+            overflow-y: scroll;
+            background-color: #f9f9f9;
+            margin-top: 10px;
+        }
+        input[type="text"] {
+            flex: 1;
+            padding: 6px;
+        }
+        button {
+            padding: 6px 12px;
+            cursor: pointer;
+        }
+
+        /* 모달 스타일 */
+        .modal {
+            display: none; /* 모달 기본적으로 숨김 */
+            position: fixed;
+            z-index: 1; /* 모달이 다른 콘텐츠 위에 표시되도록 */
+            left: 0;
+            top: 0;
+            width: 100%;
+            height: 100%;
+            overflow: auto;
+            background-color: rgba(0, 0, 0, 0.4); /* 배경을 반투명 검은색으로 */
+        }
+        .modal-content {
+            background-color: #fff;
+            margin: 15% auto;
+            padding: 20px;
+            border: 1px solid #888;
+            width: 80%;
+            max-width: 600px;
+        }
+        .close {
+            color: #aaa;
+            float: right;
+            font-size: 28px;
+            font-weight: bold;
+        }
+        .close:hover,
+        .close:focus {
+            color: black;
+            text-decoration: none;
+            cursor: pointer;
+        }
+    </style>
+</head>
+<body>
+    <div class="chat-container">
+        <h1>WebSocket Chat</h1>
+
+        <!-- 채팅방 선택 -->
+        <div>
+            <h2>Select a Room</h2>
+            <div class="room-list" id="roomList">
+                <!-- 방 목록이 여기에 표시됩니다 -->
+            </div>
+        </div>
+
+        <!-- 채팅방 ID 입력 -->
+        <div class="input-group">
+            <label for="roomId" style="align-self: center;">Room ID:</label>
+            <input type="text" id="roomId" placeholder="Enter Room ID (e.g., room1)" value="room1">
+            <button onclick="connect()">Enter Room</button>
+        </div>
+
+        <!-- 채팅 메시지 전송 -->
+        <div class="input-group">
+            <input type="text" id="message" placeholder="Type a message">
+            <button onclick="sendMessage()">Send</button>
+        </div>
+
+        <!-- 메시지 출력 -->
+        <div id="chatBox"></div>
+
+        <!-- 모달 띄우기 버튼 -->
+        <button id="openModalBtn">Open Chat</button>
+    </div>
+
+    <!-- 모달 구조 -->
+    <div id="myModal" class="modal">
+        <div class="modal-content">
+            <span class="close" onclick="closeModal()">&times;</span>
+            <h2>WebSocket Chat</h2>
+
+            <!-- 채팅방 선택 -->
+            <div>
+                <h3>Select a Room</h3>
+                <div class="room-list" id="modalRoomList">
+                    <!-- 방 목록이 여기에 표시됩니다 -->
+                </div>
+            </div>
+
+            <!-- 채팅방 ID 입력 -->
+            <div class="input-group">
+                <label for="roomId" style="align-self: center;">Room ID:</label>
+                <input type="text" id="roomId" placeholder="Enter Room ID (e.g., room1)" value="room1">
+                <button onclick="connect()">Enter Room</button>
+            </div>
+
+            <!-- 채팅 메시지 전송 -->
+            <div class="input-group">
+                <input type="text" id="message" placeholder="Type a message">
+                <button onclick="sendMessage()">Send</button>
+            </div>
+
+            <!-- 메시지 출력 -->
+            <div id="chatBox"></div>
+        </div>
+    </div>
+
+    <!-- SockJS & StompJS 라이브러리 -->
+    <script src="https://cdn.jsdelivr.net/npm/sockjs-client@1/dist/sockjs.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/stompjs@2.3.3/lib/stomp.min.js"></script>
+
+    <!-- 채팅 JS -->
+    <script src="/js/chat.js"></script>
+
+    <script>
+        // 모달 열기
+        document.getElementById('openModalBtn').onclick = function() {
+            document.getElementById('myModal').style.display = "block";
+        }
+
+        // 모달 닫기
+        function closeModal() {
+            document.getElementById('myModal').style.display = "none";
+        }
+
+        // 모달 외부 클릭 시 닫기
+        window.onclick = function(event) {
+            if (event.target == document.getElementById('myModal')) {
+                closeModal();
+            }
+        }
+    </script>
+</body>
+</html>

@@ -1,0 +1,28 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <link href="/main.css" rel="stylesheet">
+    <link href="board/boardwrite.css" rel="stylesheet">
+</head>
+<body>
+<div th:replace="~{ nav.html::navbar }"></div>
+<h2>게시판 쓰는 페이지</h2>
+<form action="/boardAdd" method="POST" class="board-form">
+    <div class="form-group">
+        <label for="boardtitle">제목</label>
+        <input id="boardtitle" name="boardtitle" placeholder="제목을 입력하세요" required>
+    </div>
+    <div class="form-group">
+        <label for="boardcontent">내용</label>
+        <textarea id="boardcontent" name="boardcontent" placeholder="내용을 입력하세요" rows="6" required></textarea>
+    </div>
+    <button type="submit">전송</button>
+</form>
+
+</body>
+</html>

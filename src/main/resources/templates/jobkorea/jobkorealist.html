@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>잡코리아 리스트</title>
+    <link href="/main.css" rel="stylesheet">
+    <link href="/jobkorea/jobkorea.css" rel="stylesheet">
+
+</head>
+<body>
+
+<div th:replace="~{ nav.html::navbar }"></div>
+<div class="search-container">
+    <form action="/jobkorea/search" method="POST" class="search-form">
+        <div class="form-group">
+            <label for="searchJobKoreaTypeCd">유형</label>
+            <input name="searchJobKoreaTypeCd" class="search-input" placeholder="유형 입력">
+        </div>
+
+        <div class="form-group">
+            <label for="searchDisplayName">등록자</label>
+            <input name="searchDisplayName" class="search-input" placeholder="등록자 입력">
+        </div>
+
+        <div class="form-group">
+            <label for="searchArea">지역</label>
+            <input name="searchArea" class="search-input" placeholder="지역 입력">
+        </div>
+
+        <div class="form-group">
+            <label for="searchName">이름</label>
+            <input name="searchName" class="search-input" placeholder="이름 입력">
+        </div>
+
+        <div class="form-group">
+            <label for="searchSkill">기술</label>
+            <input name="searchSkill" class="search-input" placeholder="기술 입력">
+        </div>
+
+        <button type="submit" class="search-btn">검색</button>
+    </form>
+</div>
+
+
+
+<div class="container">
+    <h2 class="text-center">
+        잡코리아 리스트
+        <button type="button" class="btn btn-primary sb" onclick="window.location.href='/jobkoreawrite'">추가</button>
+
+    </h2>
+    <table class="table table-bordered table-striped">
+        <thead class="table-dark">
+        <tr>
+            <th style="width: 2%;">ID</th>
+            <th style="width: 5%;">등록자 유형</th>
+            <th style="width: 7%;">서칭일</th>
+            <th style="width: 4%;">지역</th>
+            <th style="width: 5%;">생년월일</th>
+            <th style="width: 6%;">이름</th>
+            <th style="width: 7%;">잡코리아 ID</th>
+            <th style="width: 7%;">철수일자</th>
+            <th style="width: 7%;">연락번호</th>
+            <th style="width: 11%;">메일주소</th>
+            <th style="width: 10%;">주요스킬</th>
+            <th style="width: 4%;">경력</th>
+            <th style="width: 4%;">희망단가</th>
+            <th style="width: 11%;">서칭 플젝명</th>
+            <th style="width: 8%;">등록자</th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr th:each="data : ${jobkoreas}">
+            <td>
+                <a th:href="@{/jobkoreaedit/{id}(id=${data.id})}" th:text="${data.id}"></a>
+            </td>
+            <td th:text="${data.jobKoreaTypeCd}"></td>
+            <td th:text="${#temporals.format(data.searchDate, 'yyyy-MM-dd')}"></td>
+            <td th:text="${data.area}"></td>
+            <td th:text="${data.birthday}"></td>
+            <td th:text="${data.name}"></td>
+            <td th:text="${data.jobKoreaId}"></td>
+            <td th:text="${data.outDate != null && !data.outDate.isEmpty() ? #temporals.format(T(java.time.LocalDate).parse(data.outDate), 'yyyy-MM-dd') : ''}"></td>
+			
+            <td th:text="${data.contactNum}"></td>
+            <td th:text="${data.email}"></td>
+            <td th:text="${data.skill}"></td>
+            <td th:text="${data.carrer}"></td>
+            <td th:text="${data.hopePrice}"></td>
+            <td th:text="${data.projectNm}"></td>
+            <td th:text="${data.displayName}"></td>
+        </tr>
+
+        </tbody>
+    </table>
+
+
+</div>
+
+</body>
+</html>

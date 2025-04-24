@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>회원가입</title>
+    <link href="/css/login.css" rel="stylesheet">
+</head>
+<body>
+
+
+
+<div class="login-container">
+    <h2>MinLogin</h2>
+
+    <div th:if="${param.error}" class="error-message">
+        <h4>아이디나 비번 틀림</h4>
+    </div>
+
+    <form action="/login" method="POST">
+        <input name="username" placeholder="아이디">
+        <input name="password" type="password" placeholder="비밀번호">
+        <button type="submit">전송</button>
+    </form>
+</div>
+
+</body>
+</html>

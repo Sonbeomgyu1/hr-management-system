@@ -1,0 +1,79 @@
+/* 고객 수정 페이지 전체 레이아웃 (ERP 스타일) */
+.customer-edit-container {
+    width: 100%;
+    max-width: 700px;
+    margin: 60px auto;
+    padding: 40px;
+    border-radius: 8px;
+    background-color: #ffffff;
+    box-shadow: 0 6px 20px rgba(0, 0, 0, 0.08);
+    text-align: left;
+}
+
+/* 제목 스타일 */
+.customer-edit-container h2 {
+    font-size: 22px;
+    font-weight: 600;
+    color: #003366;
+    margin-bottom: 30px;
+    padding-bottom: 10px;
+    border-bottom: 2px solid #007bff;
+}
+
+/* 폼 그룹 */
+.form-group {
+    margin-bottom: 25px;
+}
+
+/* 레이블 스타일 */
+.form-group label {
+    font-size: 14px;
+    font-weight: 500;
+    color: #333333;
+    display: block;
+    margin-bottom: 6px;
+}
+
+/* 입력 필드 및 텍스트 영역 스타일 */
+.form-group input,
+.form-group textarea {
+    width: 100%;
+    padding: 10px 14px;
+    font-size: 14px;
+    border: 1px solid #ccd6dd;
+    border-radius: 5px;
+    background-color: #f9fafb;
+    transition: border-color 0.3s ease;
+}
+
+.form-group input:focus,
+.form-group textarea:focus {
+    border-color: #007bff;
+    outline: none;
+    background-color: #ffffff;
+}
+
+/* 텍스트 영역 스타일 */
+.form-group textarea {
+    height: 130px;
+    resize: vertical;
+}
+
+/* 버튼 스타일 */
+.submit-button {
+    display: inline-block;
+    padding: 10px 20px;
+    border: none;
+    background-color: #0066cc;
+    color: white;
+    font-size: 15px;
+    font-weight: 500;
+    border-radius: 6px;
+    cursor: pointer;
+    transition: background-color 0.25s ease, transform 0.25s ease;
+}
+
+.submit-button:hover {
+    background-color: #004f99;
+    transform: translateY(-2px);
+}

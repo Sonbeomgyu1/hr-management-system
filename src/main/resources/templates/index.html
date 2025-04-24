@@ -1,0 +1,308 @@
+<!doctype html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>CustomeDb</title>
+    <link href="/main.css" rel="stylesheet">
+    <link href="/calendar.css" rel="stylesheet">
+
+
+    <!-- FullCalendar v3 스타일시트 추가 -->
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/fullcalendar/3.2.0/fullcalendar.min.css" rel="stylesheet" />
+
+    <!-- jQuery 라이브러리 추가 -->
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+
+    <!-- moment.js 라이브러리 추가 (FullCalendar v3 필수) -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.29.1/moment.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/fullcalendar/3.2.0/locale/ko.js"></script>
+
+    <!-- FullCalendar v3 JavaScript 추가 -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/fullcalendar/3.2.0/fullcalendar.min.js"></script>
+
+</head>
+<body>
+<div th:replace="~{ nav.html::navbar }"></div>
+
+<!-- 페이지 레이아웃 컨테이너 -->
+<div class="container">
+    <!-- FullCalendar가 삽입될 공간 -->
+    <div id="calendar"></div>
+
+    <!-- 이전 달 메모 목록 (왼쪽) -->
+    <div class="month-memos" id="monthMemosLeft">
+        <h3>이전달 일정</h3>
+        <ul id="memoListLeft"></ul>
+    </div>
+
+    <!-- 이번 달 메모 목록 (오른쪽) -->
+    <div class="month-memos" id="monthMemosRight">
+        <h3>이번달 일정</h3>
+        <ul id="memoListRight"></ul>
+    </div>
+     <!-- 채팅방 버튼 -->
+    <button id="openChatModalBtn">💬</button>
+</div>
+
+<!-- 메모 입력 창 -->
+<div id="memoModal">
+    <h4>메모 작성</h4>
+    <p><strong>날짜: </strong><span id="selectedDateText"></span></p>
+    <p><strong>이름: </strong><span id="displayNameText"></span></p>
+
+    <textarea id="memoText"></textarea>
+    <br>
+    <button id="saveMemo">저장</button>
+    <button id="cancelMemo">취소</button>
+    <button id="deleteMemo" style="background-color: red; color: white;">삭제</button>
+</div>
+ <!--채팅방 모달 관련 HTML 부분 (자동으로 표시되지 않도록 버튼으로만 열리게 설정)-->
+<!-- 채팅방 모달 -->
+<div id="chatModalOverlay"></div>
+<div id="chatModal" style="display:none;">
+    <h2>소프트톡</h2>
+
+
+    <div class="input-group">
+        <label for="roomId" style="align-self: center;">방제목:</label>
+        <input type="text" id="roomId" placeholder="Enter Room ID (e.g., room1)" value="room1">
+        <button onclick="connect()">Join</button>
+    </div>
+
+    <div class="input-group">
+        <input type="text" id="message" placeholder="메세지를 입력하세요.">
+        <button onclick="sendMessage()">Send</button>
+    </div>
+
+    <div id="chatBox"></div>
+
+    <button onclick="closeChatModal()">닫기</button>
+</div>
+
+<script src="https://cdn.jsdelivr.net/npm/sockjs-client@1/dist/sockjs.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/stompjs@2.3.3/lib/stomp.min.js"></script>
+<script src="/js/chat.js"></script>
+<script>
+// 페이지 로드시 connect()가 자동으로 실행되지 않도록 수정
+$(document).ready(function () {
+   // connect();  // 이 부분을 주석 처리하거나 삭제
+    // 다른 자동 실행 코드가 있다면 삭제해주세요.
+});
+
+// 채팅 모달을 열기 위한 버튼 클릭 이벤트
+$('#openChatModalBtn').click(function() {
+    $('#chatModal').show();  // 버튼 클릭 시 모달을 띄움
+    $('#chatModalOverlay').show();  // 모달 배경도 보이게 함
+});
+
+// 채팅 모달을 닫는 함수
+function closeChatModal() {
+    $('#chatModal').hide();  // 모달을 숨김
+    $('#chatModalOverlay').hide();  // 모달 배경도 숨김
+}
+
+    
+    
+    $(document).ready(function () {
+    var selectedDate = null;  // 선택된 날짜를 저장하는 변수
+    var displayName = '사용자';  // 실제 로그인된 사용자의 이름으로 설정해야 함
+    var currentEvent = null;  // 현재 선택된 메모의 이벤트 객체
+
+    // 메모 데이터를 가져오는 함수
+    function loadMemos() {
+        $.ajax({
+            url: '/api/memos/all',  // 메모 목록을 가져오는 API 호출
+            type: 'GET',  // GET 요청으로 데이터를 가져옴
+            success: function(response) {
+                // 응답 데이터를 통해 이벤트 객체 생성
+                var events = response.map(function(memo) {
+                    return {
+                        id: memo.id,  // 메모 ID
+                        title: memo.memo,  // 메모 내용
+                        start: memo.date,  // 메모 날짜
+                        description: memo.displayName  // 메모 작성자 이름
+                    };
+                });
+
+                // 달력에 이벤트 데이터 추가
+                $('#calendar').fullCalendar('removeEvents');  // 기존 이벤트 제거
+                $('#calendar').fullCalendar('addEventSource', events);  // 새로운 이벤트 추가
+
+                // 이전 달 메모 별도 영역에 표시
+                displayPreviousMonthMemos(response);
+                // 이번 달 메모 별도 영역에 표시
+                displayCurrentMonthMemos(response);
+            },
+            error: function(xhr, status, error) {
+                alert('메모 목록을 불러오는 데 실패했습니다.');
+            }
+        });
+    }
+
+    // 이전 달 메모 별도 표시 함수
+    function displayPreviousMonthMemos(memos) {
+        var currentDate = moment();  // 현재 날짜
+        currentDate.subtract(1, 'months');  // 한 달 전으로 설정
+
+        var previousMonth = currentDate.month();  // 이전 달의 월 번호
+
+        // 이전 달의 메모 필터링
+        var previousMonthMemos = memos.filter(function(memo) {
+            return moment(memo.date).month() === previousMonth;
+        });
+
+        // 날짜순으로 정렬 (오름차순)
+        previousMonthMemos.sort(function(a, b) {
+            return moment(a.date).isBefore(moment(b.date)) ? -1 : 1;
+        });
+
+        var memoList = $('#memoListLeft');
+        memoList.empty();  // 기존 목록 비우기
+
+        // 이전 달 메모 목록 표시
+        previousMonthMemos.forEach(function(memo) {
+            memoList.append('<li>' + memo.date + ' : ' + memo.memo + '</li>');
+        });
+    }
+
+    // 이번 달 메모 별도 표시 함수
+    function displayCurrentMonthMemos(memos) {
+        var currentDate = moment();  // 현재 날짜
+        var currentMonth = currentDate.month();  // 이번 달의 월 번호
+
+        // 이번 달의 메모 필터링
+        var currentMonthMemos = memos.filter(function(memo) {
+            return moment(memo.date).month() === currentMonth;
+        });
+
+        // 날짜순으로 정렬 (오름차순)
+        currentMonthMemos.sort(function(a, b) {
+            return moment(a.date).isBefore(moment(b.date)) ? -1 : 1;
+        });
+
+        var memoList = $('#memoListRight');
+        memoList.empty();  // 기존 목록 비우기
+
+        // 이번 달 메모 목록 표시
+        currentMonthMemos.forEach(function(memo) {
+            memoList.append('<li>' + memo.date + ' : ' + memo.memo + '</li>');
+        });
+    }
+
+    // FullCalendar 초기화
+    $('#calendar').fullCalendar({
+        locale: "ko",  // 한국어 설정
+        header: {
+            left: 'prev,next today',  // 이전, 다음, 오늘 버튼
+            center: 'title',  // 달력 제목
+            right: 'month,agendaWeek,agendaDay'  // 월, 주, 일 보기
+        },
+        events: [],  // 초기 이벤트 설정 (빈 배열)
+        selectable: true,  // 날짜 선택 가능하도록 설정
+        select: function(startDate, endDate) {
+            selectedDate = startDate;  // 선택된 날짜 저장
+            $('#memoModal').show();  // 메모 입력 모달 창 보이기
+
+            var formattedDate = selectedDate.format('YYYY-MM-DD');  // 선택된 날짜 포맷
+            $('#selectedDateText').text(formattedDate);  // 모달에 선택된 날짜 표시
+            $('#displayNameText').text(displayName);  // 모달에 사용자 이름 표시
+
+            $('#memoText').val('');  // 메모 텍스트 초기화
+            currentEvent = null;  // 현재 선택된 이벤트 초기화
+            $('#deleteMemo').hide();  // 삭제 버튼 숨기기
+        },
+        eventClick: function(event) {
+            selectedDate = moment(event.start);  // 클릭된 이벤트의 시작 날짜
+            currentEvent = event;  // 현재 선택된 이벤트 객체 저장
+
+            $('#memoModal').show();  // 메모 입력 모달 창 보이기
+            $('#selectedDateText').text(moment(event.start).format('YYYY-MM-DD'));  // 선택된 날짜 표시
+            $('#displayNameText').text(event.description);  // 작성자 이름 표시
+            $('#memoText').val(event.title);  // 메모 내용 표시
+            $('#deleteMemo').show();  // 삭제 버튼 보이기
+        }
+    });
+
+
+    // 메모 저장 버튼 클릭 시
+    $('#saveMemo').click(function () {
+        var memoText = $('#memoText').val();
+        if (memoText) {
+            var memoData = {
+                date: $('#selectedDateText').text(),  // 선택된 날짜
+                displayName: $('#displayNameText').text(),  // 작성자 이름
+                memo: memoText  // 메모 내용
+            };
+
+            // 현재 이벤트가 있으면 업데이트 요청
+            if (currentEvent) {
+                $.ajax({
+                    url: '/api/memos/update/' + currentEvent.id,  // 메모 수정 API
+                    type: 'PUT',  // PUT 요청
+                    contentType: 'application/json',  // JSON 형식
+                    data: JSON.stringify(memoData),  // 데이터 전송
+                    success: function(response) {
+                        alert('메모가 수정되었습니다.');
+                        loadMemos();  // 메모 목록 갱신
+                        $('#memoModal').hide();  // 모달 창 닫기
+                    },
+                    error: function(xhr, status, error) {
+                        console.error('메모 수정 실패:', error);  // 오류 메시지 로그 출력
+                        alert('메모 수정에 실패했습니다.');
+                    }
+                });
+            } else {
+                $.ajax({
+                    url: '/api/memos/save',  // 메모 저장 API
+                    type: 'POST',  // POST 요청
+                    contentType: 'application/json',  // JSON 형식
+                    data: JSON.stringify(memoData),  // 데이터 전송
+                    success: function(response) {
+                        alert('메모가 저장되었습니다.');
+                        loadMemos();  // 메모 목록 갱신
+                        $('#memoModal').hide();  // 모달 창 닫기
+                    },
+                    error: function(xhr, status, error) {
+                        console.error('메모 저장 실패:', error);  // 오류 메시지 로그 출력
+                        alert('메모 저장에 실패했습니다.');
+                    }
+                });
+            }
+        } else {
+            alert('메모를 작성해주세요.');  // 메모 내용이 없으면 알림
+        }
+    });
+
+    // 메모 취소 버튼 클릭 시
+    $('#cancelMemo').click(function() {
+        $('#memoModal').hide();  // 모달 창 닫기
+    });
+
+    // 메모 삭제 버튼 클릭 시
+    $('#deleteMemo').click(function() {
+        if (currentEvent) {
+            $.ajax({
+                url: '/api/memos/delete/' + currentEvent.id,  // 메모 삭제 API
+                type: 'DELETE',  // DELETE 요청
+                success: function(response) {
+                    alert('메모가 삭제되었습니다.');
+                    loadMemos();  // 메모 목록 갱신
+                    $('#memoModal').hide();  // 모달 창 닫기
+                },
+                error: function(xhr, status, error) {
+                    alert('메모 삭제 실패');
+                }
+            });
+        }
+    });
+
+    // 초기 데이터 로드
+    loadMemos();  // 메모 목록 불러오기
+});
+
+</script>
+</body>
+</html>

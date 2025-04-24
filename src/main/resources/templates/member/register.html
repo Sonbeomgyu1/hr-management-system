@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>회원가입</title>
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@300;400;500&display=swap" rel="stylesheet">
+    <link href="/main.css" rel="stylesheet">
+</head>
+<body>
+    <div th:replace="~{ nav.html::navbar }"></div>
+    <div class="container">
+        <div class="signup-box">
+            <h2>회원가입</h2>
+            <p class="info-text">새로 가입해도 쿠폰 안줌</p>
+            <form action="/member" method="POST">
+                <div class="form-group">
+                    <input name="displayName" placeholder="이름" required>
+                </div>
+                <div class="form-group">
+                    <input name="username" placeholder="아이디" required>
+                </div>
+                <div class="form-group">
+                    <input name="password" type="password" placeholder="비밀번호" required>
+                </div>
+                <button type="submit" class="submit-btn">가입하기</button>
+            </form>
+        </div>
+    </div>
+</body>
+<style>
+body {
+    background-color: #f4f6f9;
+    color: #333;
+    height: 100vh;
+    margin: 0;
+
+    justify-content: center;
+    align-items: center;
+    font-family: 'Noto Sans KR', sans-serif;
+}
+
+.signup-box {
+    background: white;
+    border-radius: 8px;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+    padding: 40px;
+    text-align: center;
+    width: 100%;
+    max-width: 600px;
+    /* 화면 중앙에 위치시키는 방법 */
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%); /* 박스를 화면의 정확한 중앙에 위치시킴 */
+}
+
+.signup-box h2 {
+    font-size: 24px;
+    margin-bottom: 20px;
+    color: #2c3e50;
+}
+
+.signup-box .info-text {
+    font-size: 14px;
+    color: #7f8c8d;
+    margin-bottom: 30px;
+}
+
+.form-group {
+    margin-bottom: 15px;
+}
+
+.form-group input {
+    width: 100%;
+    padding: 12px 15px;
+    font-size: 16px;
+    border: 1px solid #ccc;
+    border-radius: 6px;
+    box-sizing: border-box;
+    transition: border-color 0.3s;
+}
+
+.form-group input:focus {
+    border-color: #3498db;
+    outline: none;
+}
+
+.submit-btn {
+    width: 100%;
+    padding: 14px;
+    background-color: #3498db;
+    color: white;
+    font-size: 16px;
+    border: none;
+    border-radius: 6px;
+    cursor: pointer;
+    transition: background-color 0.3s;
+}
+
+.submit-btn:hover {
+    background-color: #2980b9;
+}
+
+.submit-btn:active {
+    background-color: #1f5982;
+}
+
+
+</style>
+</html>

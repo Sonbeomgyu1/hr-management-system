@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8" />
+  <link href="/main.css" rel="stylesheet">
+  <link href="/contract/uploadlform.css" rel="stylesheet">
+  <title>계약서 업로드 폼</title>
+</head>
+<body>
+	<div th:replace="~{nav.html::navbar}"></div>
+  <h2>계약서 업로드 폼</h2>
+
+  <form action="http://localhost:8080/contracts/upload" method="POST" enctype="multipart/form-data">
+    <label>제목 (title):</label>
+    <input type="text" name="title" required /><br><br>
+
+    <label>시작일 (startDate):</label>
+    <input type="date" name="startDate" required /><br><br>
+
+    <label>종료일 (endDate):</label>
+    <input type="date" name="endDate" required /><br><br>
+
+    <label>회원 ID (memberId):</label>
+<input type="number" name="memberId" th:value="${memberId}" readonly /><br><br>
+
+
+    <label>파일 업로드 (PDF, 이미지):</label>
+    <input type="file" name="file" accept=".pdf,.jpg,.png" required /><br><br>
+
+    <button type="submit">업로드</button>
+  </form>
+</body>
+</html>

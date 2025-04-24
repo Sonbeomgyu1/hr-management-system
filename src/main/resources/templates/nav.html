@@ -1,0 +1,29 @@
+<div class="nav bg" th:fragment="navbar">
+    <a class="logo bg" href="/">SoftBank</a>
+    <a class="bg" href="/manpower">프리랜서</a>
+    <a class="bg" href="/jobkorea">잡코리아</a>
+<!--    <a class="bg" href="/list/page/1">상품목록</a>-->
+    <a class="bg" href="/customerlist">고객목록</a>
+     <a class="bg" href="/projects/list">프로젝트</a>
+    <a class="bg" href="/board">게시판</a>
+
+    <!-- ROLE_ADMIN만 보이게 -->
+<!--    <div sec:authorize="hasRole('ROLE_ADMIN')">-->
+<!--        <a class="bg" href="/order/all">총 주문내역</a>-->
+<!--    </div>-->
+
+    <!-- 로그인 상태일 때 username -->
+    <div sec:authorize="isAuthenticated()" class="nav-right">
+        <a href="/my-page" class="user-info bg">👤 <span sec:authentication="principal.displayName"></span></a>
+        <a class="logout-btn bg" href="/logout">로그아웃</a>
+        
+        <!-- 출퇴근 기록 버튼 추가 -->
+        <a href="/attendance/list" class="bg">출퇴근 기록</a>
+    </div>
+
+    <!-- 로그인 안 했을 때 -->
+    <div sec:authorize="isAnonymous()" class="nav-right">
+        <a class="login-btn bg" href="/login">로그인</a>
+        <a class="signup-btn bg" href="/register">회원가입</a>
+    </div>
+</div>

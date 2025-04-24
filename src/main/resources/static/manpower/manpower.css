@@ -1,0 +1,399 @@
+/* ===== 기본 리셋 ===== */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Segoe UI', 'Noto Sans KR', sans-serif;
+    background-color: #f0f2f5;
+    color: #333;
+}
+
+/* ===== 중앙 컨테이너 ===== */
+.container {
+    max-width: 1400px;
+    margin: 30px auto;
+    background-color: #fff;
+    border-radius: 8px;
+    padding: 30px;
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.05);
+}
+
+/* ===== 제목 ===== */
+h2 {
+    font-size: 20px;
+    font-weight: 600;
+    margin-bottom: 20px;
+    color: #222;
+}
+
+/* ===== 버튼 ===== */
+button, .btn {
+    background-color: #0066cc;
+    color: #fff;
+    padding: 10px 18px;
+    border: none;
+    border-radius: 4px;
+    font-size: 14px;
+    font-weight: 500;
+    cursor: pointer;
+    transition: background 0.3s;
+}
+
+button:hover, .btn:hover {
+    background-color: #004f9e;
+}
+
+/* ===== 테이블 ===== */
+table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 20px;
+    font-size: 14px;
+    background-color: white;
+}
+
+th, td {
+    padding: 10px;
+    border: 1px solid #dcdcdc;
+    text-align: left;
+}
+
+th {
+    background-color: #e9f1fb;
+    color: #333;
+    font-weight: bold;
+}
+
+/* ===== 입력 필드 ===== */
+input, select, textarea {
+    width: 100%;
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    font-size: 14px;
+    background-color: #fdfdfd;
+    transition: border-color 0.2s;
+}
+
+input:focus, select:focus, textarea:focus {
+    border-color: #007bff;
+    outline: none;
+}
+
+/* ===== 라벨 + 폼 ===== */
+label {
+    font-size: 13px;
+    font-weight: 600;
+    color: #444;
+    margin-bottom: 5px;
+    display: block;
+    margin-top: 20px;
+}
+
+.form-group {
+    margin-bottom: 15px;
+}
+
+
+
+
+
+/* 검색창 컨테이너 */
+.search-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    margin-top: 10px; /* 상단 여백 */
+}
+
+/* 검색 폼 */
+.search-form {
+    display: flex;
+
+    gap: 10px;
+    max-width: 1300px; /* 최대 너비 */
+    width: 70%;
+    background: #fff;
+    padding: 15px;
+    border-radius: 12px;
+    box-shadow: 0 8px 40px rgba(0, 0, 0, 0.1);
+}
+
+/* 폼 그룹 (각 입력 항목을 가로 배치) */
+.form-group {
+    display: flex;
+    align-items: center; /* 항목을 세로 중앙 정렬 */
+    gap: 10px; /* 라벨과 입력 필드 사이 간격 */
+
+}
+
+/* 마지막 줄 "검색" 버튼을 위한 스타일 */
+.search-btn {
+    width: 100%;
+    padding: 10px;
+    font-size: 16px;
+    background-color: #007bff;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+.search-btn:hover {
+    background-color: #0056b3;
+}
+
+
+
+
+/* 라벨 스타일 */
+label {
+    font-size: 14px;
+    color: #333;
+    font-weight: bold; /* 글씨를 굵게 설정 */
+    white-space: nowrap; /* 줄바꿈 방지 */
+    margin-button: 10px;
+}
+
+/* 입력 필드 스타일 */
+.search-input {
+    padding: 10px;
+    font-size: 14px;
+    border: 1px solid #ced4da;
+    border-radius: 6px;
+    background-color: #f8f9fa;
+    width: 60%; /* 입력 필드가 가득 차도록 설정 */
+    transition: border-color 0.3s ease;
+    margin-top: 20px;
+}
+
+.search-input:focus {
+    border-color: #007bff;
+    outline: none;
+}
+
+/* 검색 버튼 스타일 */
+.search-btn {
+    padding: 2px 3px;
+    background-color: black;
+    color: white;
+    border-radius: 4px; /* 테두리 둥글기 */
+    cursor: pointer;
+    font-size: 14px;
+    transition: background-color 0.3s ease;
+    width: auto; /* 버튼 크기 자동 조절 */
+    min-width: 80px; /* 버튼 최소 크기 설정 */
+    height: 40px;
+    margin-top:15px;
+
+}
+
+.search-btn:hover {
+    background-color: #0056b3;
+}
+
+/* 댓글 영역 */
+.comment-title {
+    font-size: 24px;
+    font-weight: bold;
+    margin-bottom: 10px;
+    color: #333;
+}
+
+.comments-section {
+    margin-top: 20px;
+    padding: 10px;
+    background-color: #f9f9f9;
+    border-radius: 8px;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+}
+
+.comment-item {
+    margin-bottom: 15px;
+    padding: 10px;
+    border-bottom: 1px solid #ddd;
+}
+
+.comment-username {
+    font-weight: bold;
+    color: #007bff;
+}
+
+.comment-content {
+    margin-left: 10px;
+    color: #555;
+    font-style: italic;
+}
+
+.no-comments {
+    color: #999;
+    font-style: italic;
+}
+
+/* 댓글 작성 폼 */
+.comment-form {
+    margin-top: 20px;
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+    padding: 10px;
+    background-color: #f1f1f1;
+    border-radius: 8px;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+}
+
+.comment-input {
+    padding: 12px;
+    font-size: 14px;
+    border-radius: 6px;
+    border: 1px solid #ccc;
+    background-color: #fff;
+    transition: border 0.3s ease;
+}
+
+.comment-input:focus {
+    border-color: #007bff;
+    outline: none;
+}
+
+.submit-button {
+    padding: 10px 15px;
+    background-color: #007bff;
+    color: white;
+    border: none;
+    border-radius: 6px;
+    font-size: 14px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+.submit-button:hover {
+    background-color: #0056b3;
+}
+
+
+/*댓글 css 시작*/
+/* 전체 댓글 영역을 flexbox로 설정하여 두 영역을 나란히 배치 */
+.comment-section-container {
+    display: flex;
+    margin-top: 20px;
+    justify-content: space-between; /* 양쪽으로 배치 */
+    gap: 30px; /* 두 영역 사이의 간격 */
+    align-items: flex-start; /* 세로 방향으로 위쪽 정렬 */
+    flex-wrap: wrap; /* 화면 크기가 줄어들면 자동으로 줄바꿈 */
+    margin-bottom: 30px;
+    padding: 20px;
+    background-color: #f8f9fa;
+    border-radius: 8px;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+}
+
+/* 댓글 출력 영역 */
+.comment-section {
+    flex: 1; /* 댓글 영역이 여유 공간을 차지 */
+}
+
+/* 댓글 제목 */
+.comment-section h3 {
+    font-size: 24px;
+    font-weight: bold;
+    color: #007bff;
+    margin-bottom: 15px;
+    text-align: left;
+    border-bottom: 2px solid #007bff;
+    padding-bottom: 10px;
+}
+
+
+
+p {
+    margin: 5px 0;
+    font-size: 16px;
+}
+
+strong {
+    color: #007bff;
+    font-weight: bold;
+}
+
+.span {
+    color: #555;
+    font-size: 14px;
+    margin-left: 10px;
+    font-style: italic;
+}
+
+
+
+/* 댓글 작성 폼 */
+.comment-form-section {
+    flex: 1; /* 댓글 작성 폼이 여유 공간을 차지 */
+    max-width: 40%; /* 폼의 최대 넓이는 50% */
+    margin-top: 30px;
+    padding: 20px;
+    background-color: #e9ecef;
+    border-radius: 8px;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+}
+
+/* 작성폼 제목 */
+.comment-form-section h4 {
+    font-size: 20px;
+    font-weight: bold;
+    color: #28a745;
+    margin-bottom: 15px;
+    text-align: left;
+    border-bottom: 2px solid #28a745;
+    padding-bottom: 10px;
+}
+
+/* 댓글 작성 폼 */
+.comment-form {
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+}
+
+.comment-form input[type="text"] {
+    padding: 12px;
+    font-size: 14px;
+    border-radius: 6px;
+    border: 1px solid #ccc;
+    background-color: #fff;
+    transition: border 0.3s ease;
+}
+
+.comment-form input[type="text"]:focus {
+    border-color: #28a745;
+    outline: none;
+}
+
+.comment-form button {
+    padding: 10px 15px;
+    background-color: #28a745;
+    color: white;
+    border: none;
+    border-radius: 6px;
+    font-size: 14px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+.comment-form button:hover {
+    background-color: #218838;
+}
+
+/* 댓글 작성 폼 - 마진 및 정렬 */
+.comment-form input[type="text"] {
+    width: 100%;
+    box-sizing: border-box;
+}
+
+/* 버튼 위치 */
+.comment-form button {
+    align-self: flex-start;
+}

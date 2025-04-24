@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+
+<head>
+	<meta charset="UTF-8" />
+
+	<title>업로드된 계약서 목록</title>
+	<link href="/main.css" rel="stylesheet">
+	<link href="/contract/uploadlist.css" rel="stylesheet">
+</head>
+
+<body>
+	<div th:replace="~{nav.html::navbar}"></div>
+	<h2>계약서 목록</h2>
+	<table border="1">
+		<thead>
+			<tr>
+				<th>제목</th>
+				<th>파일 경로</th>
+				<th>시작일</th>
+				<th>종료일</th>
+				<th>알림 상태</th>
+				<th>다운로드</th>
+				<th>삭제여부</th>
+			</tr>
+		</thead>
+		<tbody>
+			<tr th:each="contract : ${contracts}">
+				<td th:text="${contract.title}">제목</td>
+				<td th:text="${contract.originalFileName}">파일명</td>
+				<td th:text="${contract.startDate}">시작일</td>
+				<td th:text="${contract.endDate}">종료일</td>
+				<td th:text="${contract.notified ? '전송됨' : '미전송'}">알림 상태</td>
+
+				<td>
+					<a href="#" th:attr="data-url=@{'/contracts/download'(path=${contract.filePath})}" onclick="downloadAndRefresh(this)">다운로드</a>
+				</td>
+
+				<!-- ✅ 삭제 버튼용 td는 따로 하나만! -->
+				<td>
+					<form th:action="@{/contracts/delete}" method="post" style="display:inline;">
+						<input type="hidden" th:name="contractId" th:value="${contract.id}" />
+						<button type="submit" onclick="return confirm('정말 삭제하시겠습니까?')">삭제</button>
+					</form>
+				</td>
+			</tr>
+
+		</tbody>
+	</table>
+	<script>
+function downloadAndRefresh(anchor) {
+    const url = anchor.getAttribute('data-url');
+    const link = document.createElement('a');
+    link.href = url;
+    link.download = '';
+    document.body.appendChild(link);
+    link.click();
+    document.body.removeChild(link);
+
+    // ✅ 다운로드 후 1초 뒤 페이지 새로고침
+    setTimeout(() => {
+        location.reload();
+    }, 1000);
+}
+</script>
+</body>
+
+</html>

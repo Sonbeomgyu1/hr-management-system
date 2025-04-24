@@ -1,0 +1,150 @@
+/* 전체 페이지 스타일 */
+body {
+    font-family: Arial, sans-serif;
+    background-color: #f8f9fa;
+    margin: 0;
+    padding: 0;
+    text-align: center;
+}
+
+/* 검색 폼 스타일 */
+.customer-search-form {
+    display: flex;
+    justify-content: center;
+    margin-top: 20px;
+}
+
+.customer-search-input {
+    width: 300px;
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    font-size: 14px;
+}
+
+.customer-search-button {
+    margin-left: 8px;
+    padding: 10px 15px;
+    background-color: #007bff;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 14px;
+    transition: all 0.3s ease;
+}
+
+.customer-search-button:hover {
+    background-color: #0056b3;
+    transform: scale(1.05);
+}
+
+/* 전체 페이지 스타일 */
+body {
+    font-family: 'Segoe UI', 'Arial', sans-serif;
+    background-color: #f4f6f9;
+    margin: 0;
+    padding: 0;
+}
+
+/* 작성 버튼 */
+.customer-add-button {
+    display: block;
+    margin: 10px auto 30px;
+    padding: 12px 24px;
+    background-color: #2f855a;
+    color: #ffffff;
+    border: none;
+    border-radius: 6px;
+    font-size: 15px;
+    font-weight: 600;
+    cursor: pointer;
+    transition: background-color 0.3s ease, transform 0.2s ease;
+}
+
+.customer-add-button:hover {
+    background-color: #276749;
+    transform: scale(1.03);
+}
+
+/* 테이블 스타일 */
+.board-table {
+    width: 92%;
+    max-width: 1100px;
+    margin: 0 auto 60px;
+    border-collapse: collapse;
+    background-color: #ffffff;
+    border-radius: 10px;
+    overflow: hidden;
+    box-shadow: 0 6px 16px rgba(0, 0, 0, 0.08);
+    table-layout: fixed;
+}
+
+/* 헤더 스타일 */
+.board-table th {
+    background-color: #1a202c;
+    color: #ffffff;
+    padding: 16px;
+    font-size: 15px;
+    text-align: center;
+    border-bottom: 1px solid #e2e8f0;
+}
+
+/* 셀 스타일 */
+.board-table td {
+    padding: 14px 12px;
+    font-size: 14px;
+    text-align: center;
+    border-bottom: 1px solid #edf2f7;
+    color: #2d3748;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+/* 내용 셀 왼쪽 정렬 */
+.board-table .board-content-text {
+    text-align: left;
+    max-width: 450px;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+/* 행 hover 효과 */
+.board-table tbody tr:hover {
+    background-color: #f1f5f9;
+}
+
+/* 테이블 내 버튼 */
+.board-table button {
+    padding: 7px 14px;
+    font-size: 13px;
+    border: none;
+    border-radius: 4px;
+    color: #fff;
+    cursor: pointer;
+    transition: background-color 0.3s ease, transform 0.2s ease;
+}
+
+/* 수정 버튼 */
+.editbt,
+.board-table .edit-btn {
+    background-color: #3182ce;
+}
+.editbt:hover,
+.board-table .edit-btn:hover {
+    background-color: #2b6cb0;
+    transform: scale(1.05);
+}
+
+/* 삭제 버튼 */
+.delectbt,
+.board-table .delete-btn {
+    background-color: #e53e3e;
+}
+.delectbt:hover,
+.board-table .delete-btn:hover {
+    background-color: #c53030;
+    transform: scale(1.05);
+}

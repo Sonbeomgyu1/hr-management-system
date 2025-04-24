@@ -1,0 +1,111 @@
+/* 기본 리셋 */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+/* 바디 스타일 */
+body {
+    font-family: 'Segoe UI', 'Arial', sans-serif;
+    background-color: #f1f4f9;
+    color: #333;
+    line-height: 1.6;
+}
+
+/* 고객 폼 컨테이너 */
+.customer-form-container {
+    width: 100%;
+    max-width: 700px;
+    margin: 40px auto;
+    background-color: #ffffff;
+    padding: 20px;
+    border-radius: 8px;
+    box-shadow: 0 6px 16px rgba(0, 0, 0, 0.08);
+}
+
+/* 폼 타이틀 */
+.customer-form-title {
+    font-size: 22px;
+    font-weight: 600;
+    color: #003366;
+    text-align: left;
+    border-left: 4px solid #007bff;
+    padding-left: 12px;
+    margin-bottom: 30px;
+}
+
+/* 폼 레이아웃 */
+.customer-form {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+}
+
+/* 레이블 */
+.customer-form label {
+    font-size: 14px;
+    font-weight: 500;
+    color: #333;
+    
+}
+
+/* 입력창 */
+.customer-input {
+    padding: 8px 7px;
+    border: 1px solid #ccd6dd;
+    border-radius: 5px;
+    font-size: 14px;
+    background-color: #f9fafb;
+    transition: border-color 0.3s ease;
+}
+
+.customer-input:focus {
+    border-color: #007bff;
+    background-color: #ffffff;
+    outline: none;
+}
+
+/* 버튼 영역 */
+.customer-form-buttons {
+    display: flex;
+    justify-content: flex-end;
+    gap: 10px;
+    margin-top: 30px;
+}
+
+/* 저장 버튼 */
+.customer-save-button {
+    background-color: #0066cc;
+    color: white;
+    padding: 10px 20px;
+    border: none;
+    font-size: 14px;
+    font-weight: 500;
+    border-radius: 6px;
+    cursor: pointer;
+    transition: background-color 0.3s ease, transform 0.2s ease;
+}
+
+.customer-save-button:hover {
+    background-color: #004f99;
+    transform: translateY(-1px);
+}
+
+/* 취소 버튼 */
+.customer-cancel-button {
+    background-color: #999;
+    color: white;
+    padding: 10px 20px;
+    border: none;
+    font-size: 14px;
+    font-weight: 500;
+    border-radius: 6px;
+    cursor: pointer;
+    transition: background-color 0.3s ease, transform 0.2s ease;
+}
+
+.customer-cancel-button:hover {
+    background-color: #666;
+    transform: translateY(-1px);
+}

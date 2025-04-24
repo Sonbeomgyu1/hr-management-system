@@ -1,0 +1,129 @@
+<!DOCTYPE html>
+<html lang="ko" xmlns:th="http://www.thymeleaf.org">
+
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>출퇴근 기록</title>
+	<link href="/main.css" rel="stylesheet">
+	<link href="/attendance/attendancelist.css" rel="stylesheet">
+</head>
+
+<body>
+	<div th:replace="~{ nav.html::navbar }"></div>
+	<h2 style="font-size: 25px; margin-top: 25px;">출퇴근 기록 목록</h2>
+
+	<!-- 출퇴근 기록 목록 테이블 -->
+	<table border="1">
+		<thead>
+			<tr>
+				<th>날짜</th>
+				<th>회원 이름</th>
+				<th>출근 시간</th>
+				<th>퇴근 시간</th>
+				<th>근태 유형</th>
+				<th>삭제</th>
+				<!--<th>자세히 보기</th>-->
+				<th>퇴근 시간 기록</th>
+			</tr>
+		</thead>
+		<tbody>
+			<!-- groupedAttendances 반복문 (날짜별로 그룹화된 데이터) -->
+			<tr th:each="entry : ${groupedAttendances}">
+				<!-- 날짜 출력 -->
+				<td th:text="${entry.key}"></td>
+				<!-- 각 날짜에 해당하는 출퇴근 데이터 반복 -->
+				<td colspan="8">
+					<table>
+						<tbody>
+							<tr th:each="attendance : ${entry.value}">
+								<td th:text="${attendance != null ? attendance.member.displayName : 'N/A'}"></td>
+								<td
+									th:text="${attendance != null && attendance.checkIn != null ? T(java.time.format.DateTimeFormatter).ofPattern('yyyy-MM-dd HH:mm').format(attendance.checkIn) : 'N/A'}">
+								</td>
+								<td
+									th:text="${attendance != null && attendance.checkOut != null ? T(java.time.format.DateTimeFormatter).ofPattern('yyyy-MM-dd HH:mm').format(attendance.checkOut) : 'N/A'}">
+								</td>
+
+								<td th:text="${attendance != null ? attendance.type.label : 'N/A'}"></td>
+								<td>
+									<form
+										th:action="@{/attendance/delete/{attendanceId}(attendanceId=${attendance.id})}"
+										method="post">
+										<button type="submit">삭제</button>
+									</form>
+
+								</td>
+								<!--<td>
+									<a th:href="@{/attendance/member/{memberId}(memberId=${attendance.member.id})}">자세히 보기</a>
+								</td>-->
+								<td>
+									<form
+										th:action="@{/attendance/setCheckOut/{attendanceId}(attendanceId=${attendance.id})}"
+										method="post">
+										<button type="submit" th:disabled="${attendance.checkOut != null}">퇴근 시간
+											기록</button>
+									</form>
+								</td>
+							</tr>
+						</tbody>
+					</table>
+				</td>
+			</tr>
+		</tbody>
+	</table>
+
+	<!--<h2>출퇴근 기록 추가</h2>
+	<form action="/attendance/addAttendance" method="post" onsubmit="return validateForm()">
+		<input type="hidden" id="attendanceId" name="attendanceId" th:value="${attendanceId}">
+		<input type="hidden" id="checkIn" name="checkIn">
+		<label for="type">근태 유형:</label>
+		<select id="type" name="type" required>
+			<option value="WORK">정상 근무</option>
+			<option value="VACATION">휴가</option>
+			<option value="SICK">병가</option>
+			<option value="DISPATCH">파견</option>
+			<option value="EARLY_LEAVE">조퇴</option>
+			<option value="ABSENCE">무단결근</option>
+		</select><br>
+		<label for="checkInDisplay">출근 시간:</label>
+		<input type="text" id="checkInDisplay" readonly>
+		<button type="button" onclick="setCheckInTime()">출근 시간 기록</button><br>
+		<button type="submit">출퇴근 기록 추가</button>
+	</form>-->
+
+	<script>
+		let checkInTime = null;  // 출근 시간 저장용
+
+		function getNowDatetimeLocal() {
+			const now = new Date();
+			now.setSeconds(0, 0); // 초는 항상 0으로
+			const offset = now.getTimezoneOffset();
+			const localTime = new Date(now.getTime() - offset * 60000);
+			const year = localTime.getFullYear();
+			const month = String(localTime.getMonth() + 1).padStart(2, '0');
+			const day = String(localTime.getDate()).padStart(2, '0');
+			const hours = String(localTime.getHours()).padStart(2, '0');
+			const minutes = String(localTime.getMinutes()).padStart(2, '0');
+			return `${year}-${month}-${day}T${hours}:${minutes}`;
+		}
+
+		function setCheckInTime() {
+			checkInTime = getNowDatetimeLocal();
+			document.getElementById('checkInDisplay').value = checkInTime;
+			document.getElementById('checkIn').value = checkInTime;
+			alert("출근 시간이 기록되었습니다.");
+		}
+
+		function validateForm() {
+			if (!checkInTime) {
+				alert("출근 시간을 먼저 기록해주세요.");
+				return false;
+			}
+			return true;
+		}
+	</script>
+
+</body>
+
+</html>

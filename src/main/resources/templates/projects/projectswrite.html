@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>프로젝트 관리</title>
+    <link href="/main.css" rel="stylesheet">
+   	<link href="/project/projectwrite.css" rel="stylesheet">
+</head>
+<body>
+	<div th:replace="~{ nav.html::navbar }"></div>
+
+    <div class="container">
+        <h1>📋 프로젝트 목록</h1>
+
+        <table>
+            <thead>
+                <tr>
+                    <th>ID</th>
+                    <th>이름</th>
+                    <th>설명</th>
+                    <th>시작일</th>
+                    <th>종료일</th>
+                    <th>예산</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr th:each="project : ${projects}">
+                    <td th:text="${project.id}">1</td>
+                    <td th:text="${project.name}">이름</td>
+                    <td th:text="${project.description}">설명</td>
+                    <td th:text="${project.startDate}">2024-01-01</td>
+                    <td th:text="${project.endDate}">2024-12-31</td>
+                    <td th:text="${project.budget}">10000000</td>
+                </tr>
+            </tbody>
+        </table>
+
+        <h2>➕ 새 프로젝트 등록</h2>
+        <form onsubmit="submitProjectForm(event)">
+            <label>이름: <input type="text" name="name" required/></label><br/>
+            <label>설명: <input type="text" name="description" required/></label><br/>
+            <label>시작일: <input type="date" name="startDate" required/></label><br/>
+            <label>종료일: <input type="date" name="endDate" required/></label><br/>
+            <label>예산: <input type="number" name="budget" required/></label><br/>
+            <input type="submit" value="등록"/>
+        </form>
+    </div> <!-- 컨테이너 끝 -->
+
+    <script>
+        function submitProjectForm(event) {
+            event.preventDefault(); // 기본 폼 제출을 방지
+
+            // 폼 데이터 수집
+            const formData = {
+                name: document.querySelector('input[name="name"]').value,
+                description: document.querySelector('input[name="description"]').value,
+                startDate: document.querySelector('input[name="startDate"]').value,
+                endDate: document.querySelector('input[name="endDate"]').value,
+                budget: document.querySelector('input[name="budget"]').value
+            };
+
+            // AJAX 요청 보내기 (fetch 사용)
+            fetch('/projects', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json'
+                },
+                body: JSON.stringify(formData) // 데이터를 JSON 형식으로 전송
+            })
+            .then(response => {
+                if (!response.ok) {
+                    throw new Error("프로젝트 등록 실패");
+                }
+                return response.json();
+            })
+            .then(data => {
+                alert('프로젝트가 성공적으로 등록되었습니다.');
+                // ✅ 성공 시 리스트 페이지로 이동
+                window.location.href = 'http://localhost:8080/projects/list';
+            })
+            .catch(error => {
+                console.error('Error:', error);
+                alert('프로젝트 등록에 실패했습니다.');
+            });
+        }
+    </script>
+</body>
+</html>

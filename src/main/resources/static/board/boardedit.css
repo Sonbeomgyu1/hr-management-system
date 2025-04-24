@@ -1,0 +1,82 @@
+/* 전체 페이지 스타일 */
+body {
+    font-family: 'Segoe UI', 'Roboto', 'Arial', sans-serif;
+    background-color: #f4f6f9;
+    margin: 0;
+    padding: 0;
+    color: #2d3748;
+}
+
+/* 제목 스타일 */
+h2 {
+    text-align: center;
+    font-size: 32px;
+    font-weight: 700;
+    margin: 50px 0 30px;
+    color: #2b6cb0;
+}
+
+/* 폼 스타일 */
+form {
+    width: 100%;
+    max-width: 900px;
+    margin: 0 auto;
+    padding: 40px;
+    background-color: #ffffff;
+    border-radius: 10px;
+    box-shadow: 0 6px 20px rgba(0, 0, 0, 0.08);
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+}
+
+/* 입력 필드 스타일 */
+form input[type="text"] {
+    width: 100%;
+    padding: 14px 16px;
+    font-size: 15px;
+    border-radius: 6px;
+    border: 1px solid #cbd5e0;
+    background-color: #fefefe;
+    transition: border-color 0.2s;
+}
+
+form input[type="text"]:focus {
+    outline: none;
+    border-color: #3182ce;
+}
+
+/* 텍스트영역 (textarea) 스타일 */
+form textarea {
+    width: 100%;
+    padding: 14px 16px;
+    font-size: 15px;
+    border-radius: 6px;
+    border: 1px solid #cbd5e0;
+    background-color: #fefefe;
+    resize: vertical;
+    transition: border-color 0.2s;
+}
+
+form textarea:focus {
+    outline: none;
+    border-color: #3182ce;
+}
+
+/* 버튼 스타일 */
+form button {
+    align-self: flex-start;
+    background-color: #2f855a;
+    color: white;
+    padding: 14px 28px;
+    font-size: 15px;
+    border: none;
+    border-radius: 6px;
+    font-weight: 500;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+form button:hover {
+    background-color: #276749;
+}
