@@ -80,7 +80,7 @@
   - 프로젝트페이지는 **프로젝트가 잡혀있을떄 고객목록 데이터를 끌어와 고객 멤버 선택 및 역할을 추가할수있음.**  
   - 해당 프로젝트의 라벨 별로 클릭시 일정 추가, 수정, 삭제 가능
     ![image](https://github.com/user-attachments/assets/9ba24b69-b307-484a-b88f-8bf5b9e08e35)
-    ![image](https://github.com/user-attachments/assets/0d797652-fb61-422d-b67f-45dcecfc10f2)
+    ![image](https://github.com/user-attachments/assets/dbe0a3a5-4619-4afb-bc8f-53115adbebad)
     ![image](https://github.com/user-attachments/assets/e361db40-9c99-412d-9bdb-588ffbb506fb)
 
 
