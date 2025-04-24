@@ -14,6 +14,8 @@
 - **고객 목록 조회**: 로그인한 사용자 ID별 필터링된 목록 조회 , 대화이력(댓글) 기능
 - **권한 관리**: 관리자(ROLE_ADMIN)와 사용자(ROLE_USER) 구분
 - **풀캘린더 일정 관리**: CRUD 기능 제공
+- **프로젝트 일정 관리**: CRUD 기능 제공, 고객목록 조회에서 추가된 데이터를 가져와 고객을 프로젝트에 추가할수있도록 구현
+- **Mypage 관리**: CRUD 기능 제공
 
 
   
@@ -82,6 +84,18 @@
     ![image](https://github.com/user-attachments/assets/9ba24b69-b307-484a-b88f-8bf5b9e08e35)
     ![image](https://github.com/user-attachments/assets/dbe0a3a5-4619-4afb-bc8f-53115adbebad)
     ![image](https://github.com/user-attachments/assets/e361db40-9c99-412d-9bdb-588ffbb506fb)
+
+- **MyPage 관리**
+- MyPage페이지는 **ROLE_ADMIN/ROLE_USER 표시, 출퇴근기록추가, 파일업로드기능추가**
+- **출퇴근기록** 근태유형, 출근시간(클릭하는날짜 및 시간) 기록추가 가능 출퇴근기록은 ROLE_ADMIN 권한 가진 ID는 기록을 다 볼수있고
+- ROLE_USER는 본인의 ID만 확인할수있도록 구현함.
+- **파일업로드기능** 파일업로드 기능으로 curd구현 파일 다운로드시 확인/미확인 구현
+![image](https://github.com/user-attachments/assets/bb37fa93-850b-4921-8a5e-dbd4fada0788)
+![image](https://github.com/user-attachments/assets/be7d2948-80b9-4896-9ef1-f010671bcd77)
+![image](https://github.com/user-attachments/assets/fbd58c04-6061-49a8-8585-09c7c1602043)
+![image](https://github.com/user-attachments/assets/78a69341-2c15-437d-872e-15e1a1fd6ec6)
+![image](https://github.com/user-attachments/assets/f591742a-a706-44ba-ba21-10f395c54893)
+
 
 
 
