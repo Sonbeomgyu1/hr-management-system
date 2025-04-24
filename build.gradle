@@ -1,5 +1,6 @@
 plugins {
     id 'java'
+    id 'war'
     id 'org.springframework.boot' version '3.4.2'
     id 'io.spring.dependency-management' version '1.1.7'
 }
@@ -15,7 +16,7 @@ java {
 
 repositories {
     mavenCentral()
-    gradlePluginPortal() // Plugin 다운로드 문제 방지용
+    gradlePluginPortal()
 }
 
 dependencies {
@@ -26,7 +27,6 @@ dependencies {
     implementation 'org.thymeleaf.extras:thymeleaf-extras-springsecurity6:3.1.1.RELEASE'
 
     runtimeOnly 'com.mysql:mysql-connector-j'
-
     developmentOnly 'org.springframework.boot:spring-boot-devtools'
     
     compileOnly 'org.projectlombok:lombok'
@@ -35,23 +35,29 @@ dependencies {
     testImplementation 'org.springframework.boot:spring-boot-starter-test'
     testRuntimeOnly 'org.junit.platform:junit-platform-launcher'
     
-     // 웹소켓 + STOMP용
-	implementation 'org.springframework.boot:spring-boot-starter-websocket'
-
-	// (선택) 프론트에서 SockJS, STOMP 사용할 경우 - 웹자르(webjars) 클라이언트 라이브러리
-	implementation 'org.webjars:sockjs-client:1.5.1'
-	implementation 'org.webjars:stomp-websocket:2.3.3'
+    implementation 'org.springframework.boot:spring-boot-starter-websocket'
+    implementation 'org.webjars:sockjs-client:1.5.1'
+    implementation 'org.webjars:stomp-websocket:2.3.3'
 }
 
+// resources 포함 확실하게 설정
+sourceSets {
+    main {
+        resources {
+            srcDirs = ['src/main/resources']
+            includes = ['**/*']
+        }
+    }
+}
+
+// 컴파일러 파라미터 및 Java 21 설정
 tasks.withType(JavaCompile) {
     options.compilerArgs << '-parameters'
+    javaCompiler = javaToolchains.compilerFor {
+        languageVersion = JavaLanguageVersion.of(21)
+    }
 }
 
 tasks.named('test') {
     useJUnitPlatform()
-}
-tasks.withType(JavaCompile).configureEach {
-    javaCompiler = javaToolchains.compilerFor {
-        languageVersion = JavaLanguageVersion.of(21)
-    }
 }

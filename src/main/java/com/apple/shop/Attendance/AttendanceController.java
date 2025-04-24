@@ -61,12 +61,11 @@ public class AttendanceController {
         // 날짜별로 출퇴근 기록을 그룹화
         Map<LocalDate, List<Attendance>> groupedByDate = attendances.stream()
                 .collect(Collectors.groupingBy(
-                		attendance -> attendance.getCheckIn().toLocalDate(),
-						/* TreeMap::new,  오름차순 정렬*/
-                		 () -> new TreeMap<>(Comparator.reverseOrder()), // 내림차순 정렬
-                         Collectors.toList()
-                		
-                		));
+                        attendance -> attendance.getCheckIn().toLocalDate(),
+                        () -> new TreeMap<LocalDate, List<Attendance>>(Comparator.reverseOrder()),
+                        Collectors.toList()
+                ));
+
 
         model.addAttribute("groupedAttendances", groupedByDate);
         return "attendance/list"; // 출퇴근 기록 목록 페이지

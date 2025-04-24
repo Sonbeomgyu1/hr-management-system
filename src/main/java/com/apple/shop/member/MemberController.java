@@ -55,7 +55,7 @@ public class MemberController {
     //로그인폼 겟매핑!!
     @GetMapping("/login")
     public String login() {
-        return "/member/login.html";
+        return "member/login.html";
     }
 
     //Authentication auth 매개변수를 사용하면 Spring Security가 현재 로그인한 사용자의 인증 정보를 자동으로 주입
