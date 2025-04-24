@@ -76,6 +76,15 @@
     ![image](https://github.com/user-attachments/assets/028c4674-adb0-4260-b60d-bfde96ee25f3)
     ![image](https://github.com/user-attachments/assets/8e3d1e10-3982-4264-a18c-4c2663082754)
 
+- **프로젝트 일정관리**  
+  - 프로젝트페이지는 **프로젝트가 잡혀있을떄 고객목록 데이터를 끌어와 고객 멤버 선택 및 역할을 추가할수있음.**  
+  - 해당 프로젝트의 라벨 별로 클릭시 일정 추가, 수정, 삭제 가능
+    ![image](https://github.com/user-attachments/assets/9ba24b69-b307-484a-b88f-8bf5b9e08e35)
+    ![image](https://github.com/user-attachments/assets/0d797652-fb61-422d-b67f-45dcecfc10f2)
+    ![image](https://github.com/user-attachments/assets/e361db40-9c99-412d-9bdb-588ffbb506fb)
+
+
+
 
 - **모든 페이지 CRUD 기능 지원**  
   - 모든 데이터 관리 페이지에서 **CRUD (Create, Read, Update, Delete) 기능 구현**  
