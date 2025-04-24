@@ -25,7 +25,8 @@
  
 - **로컬 환경 접속:** localhost:8080에서 로그인 후 메인 페이지의 풀캘린더 확인 가능.
  ![image](https://github.com/user-attachments/assets/fff1b3f4-6f14-49dc-8baf-f02a39ad6dec)
-![image](https://github.com/user-attachments/assets/3c581d2e-17d7-4563-838c-2f7f3e4bb40f)
+ ![image](https://github.com/user-attachments/assets/e54cf44d-fb3d-4c64-b0d6-92b89fef82c5)
+
 
 
 - **프리랜서**: 검색, 등록, 수정, 삭제 및 고객 목록 이동 기능 제공.
