@@ -27,6 +27,8 @@
  ![image](https://github.com/user-attachments/assets/fff1b3f4-6f14-49dc-8baf-f02a39ad6dec)
  ![image](https://github.com/user-attachments/assets/e54cf44d-fb3d-4c64-b0d6-92b89fef82c5)
 
+- **채팅방 구현**: 방이름 설정후 join을 눌렀을시 각 채팅방 입장가능. 각 ID마다 로그인시 채팅가능
+- ![image](https://github.com/user-attachments/assets/ccfce713-52dd-470c-8af0-724bdc736661)
 
 
 - **프리랜서**: 검색, 등록, 수정, 삭제 및 고객 목록 이동 기능 제공.
