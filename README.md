@@ -8,6 +8,7 @@
 
 - **프리랜서 및 잡코리아 목록**: 검색, 수정, 삭제 가능
 - **로컬 환경 접속**: localhost:8080에서 로그인 후 메인 페이지의 풀캘린더 확인 가능
+- **실시간 채팅**: Spring WebSocket 기반의 간단한 채팅방 기능 구현
 - **프리랜서 관리**: 검색, 등록, 수정, 삭제 및 고객 목록 이동 , 대화이력(댓글) 기능
 - **잡코리아 관리**: 검색, 등록, 수정, 삭제 및 고객 목록 이동 , 대화이력(댓글) 기능
 - **게시판 CRUD**: 기본적인 게시판 기능 제공
@@ -107,3 +108,4 @@
 - **Database:** MySQL
 - **Build Tool:** Gradle
 - **Authentication:** Spring Security + JWT
+- **Real-time Communication:** Spring WebSocket, SockJS, STOMP
